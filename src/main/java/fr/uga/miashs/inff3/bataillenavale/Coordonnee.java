@@ -19,7 +19,7 @@ public class Coordonnee {
 
 	
 	public int getLigne() {
-		// A modifier
+		
 		return 0;
 	}
 	
