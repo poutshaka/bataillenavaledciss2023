@@ -10,7 +10,7 @@ public class TestCoordonnee {
 	private Coordonnee b4;
 	private Coordonnee a10;
 	
-	private Coordonnee a2 = new Coordonnee("A2");
+	private Coordonnee a2 = new Coordonnee("A5");
 	private Coordonnee e1 = new Coordonnee("E1");
 	
 	@Test
