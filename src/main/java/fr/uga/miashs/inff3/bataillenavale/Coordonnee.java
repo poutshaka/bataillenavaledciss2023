@@ -13,7 +13,7 @@ public class Coordonnee {
 	}
 	
 	public Coordonnee(String s) {
-		// A modifier
+		
 	}
 	
 
