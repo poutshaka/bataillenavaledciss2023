@@ -2,13 +2,21 @@ package fr.uga.miashs.inff3.bataillenavale;
 
 public class Coordonnee {
 	
+	private int ligne;
+	private int colonne; 
+	
+	public Coordonnee (int ligne, int colonne) {
+		if (ligne<0 || ligne>=26 || colonne<0 || colonne>=26)
+			throw new IllegalArgumentException("Les coordonnes sont hors limites.");
+		this.ligne = ligne;
+		this.colonne = ligne;
+	}
+	
 	public Coordonnee(String s) {
 		// A modifier
 	}
 	
-	public Coordonnee(int l, int c) {
-		// A modifier
-	}
+
 	
 	public int getLigne() {
 		// A modifier
