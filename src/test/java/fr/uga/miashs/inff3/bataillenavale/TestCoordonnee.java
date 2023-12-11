@@ -11,7 +11,7 @@ public class TestCoordonnee {
 	private Coordonnee a10;
 	
 	private Coordonnee a2 = new Coordonnee("A5");
-	private Coordonnee e1 = new Coordonnee("E1");
+	private Coordonnee e1 = new Coordonnee("E5");
 	
 	@Test
 	public void testConstructeurString() {
