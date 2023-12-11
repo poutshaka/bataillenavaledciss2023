@@ -1,7 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
-import batailleNavale.Coordonnee;
-import batailleNavale.Navire;
+import fr.uga.miashs.inff3.bataillenavale.Coordonnee;
 
 public class Navire {
 	
