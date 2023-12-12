@@ -39,14 +39,13 @@ public class TestCoordonnee {
 		String expected = "B2";
 		String result = c.toString();
 
-			for (int i = 0; i < result.length(); i++) {
-    			if (result.charAt(i) != expected.charAt(i)) {
-        			System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
-        			return;
-        			}
-        		}
 
-					System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
+		    if (result.equals(expected)) {
+		        System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
+		    } else {
+		        System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
+		    
+		}
 	}
 	
 	
@@ -54,7 +53,7 @@ public class TestCoordonnee {
 	
 	
 
-	
+	//
 	
 
 	public static void main(String[] args) {
