@@ -98,7 +98,6 @@ public GrilleNavale(int taille, int nbNavires) {
 	    }
 	    
 	    private boolean ajouteDansTirsRecus(Coordonnee c) {
-	    	
 	    	if(!estDansTirsRecus(c)) {
 	    		tirsRecus[nbTirsRecus++]=c;
 	    		return true;
