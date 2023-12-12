@@ -1,36 +1,38 @@
 package fr.uga.miashs.inff3.bataillenavale;
 import java.util.Scanner;
 
+public class JoueurTexte extends JoueurAvecGrille {
+	
+    private Scanner sc;
 
-public class JoueurTexte {
-    private Scanner scanner;
+    public JoueurTexte(GrilleNavale g, String nom) {
+		/*permet d'obtenir un joueur de nom nom et jouant sur une grille navale g.*/
+		super(g,nom);
+	}
+	
+	public JoueurTexte(GrilleNavale g) {
+		/*Cette méthode est invoquée sur le joueur défenseur après le choix de l’attaquant, c est la coordonnée à laquelle l’attaquant a choisi d’effectuer un tir. Elle retourne le résultat du tir qui ne peut être que TOUCHE, COULE, A_L_EAU, ou GAMEOVER.*/
+		super(g);
+	}
 
-    // Constructeur par défaut
-    public JoueurTexte() {
-        this.scanner = new Scanner(System.in);
-    }
 
-    // Constructeur avec un Scanner en paramètre
-    public JoueurTexte(Scanner scanner) {
-        this.scanner = scanner;
-    }
+    
 
-    // Méthode pour recueillir la saisie de la coordonnée à attaquer
-    public Coordonnee choixAttaque() {
-        System.out.println("Entrez les coordonnées de votre attaque (format : ligne colonne) :");
-        int ligne = scanner.nextInt();
-        int colonne = scanner.nextInt();
-        return new Coordonnee(ligne, colonne);
-    }
-
-    // Méthode pour afficher les étapes de l'attaque à la console
+    // Méthode pour afficher les étapes de l'attaque à la console pour l'attaque
     public void retourAttaque(Coordonnee c, int etat) {
-        System.out.println("Attaque en " + c + " - Résultat : " + etat);
+        System.out.println("Attaque en " + c);
     }
 
-    // Méthode pour afficher les étapes de la défense à la console
+    // Méthode pour afficher les étapes de la défense à la console pour la défense
     public void retourDefense(Coordonnee c, int etat) {
-        System.out.println("Défense en " + c + " - Résultat : " + etat);
+        System.out.println("Attaqué en " + c + " - Résultat : " + etat);
     }
+    
+    public Coordonnee choixAttaque() {
+		/*doit recueillir au clavier la saisie de la coordonnée à attaquer.*/
+		System.out.println("Entrez les coordonnées de votre attaque (format : colonne ligne) :");
+        String s = sc.next();
+        return new Coordonnee(s);
+	}
 }
 
