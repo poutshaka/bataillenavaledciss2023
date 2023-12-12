@@ -115,17 +115,11 @@ public class Navire {
 	
 	public boolean estTouche(Coordonnee c) {
 		/* Retourne true si et seulement si this a été touché par un tir en c. */
-		if (estVertical()) {
-			for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()].equals(c))
-					return true;
-			}return false;
-		} else {
-		    for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()].equals(c))
-					return true;
-			}return false;
-		}
+		
+		int indice = estVertical() ? c.getLigne() - debut.getLigne() + 1 : c.getColonne() - debut.getColonne() + 1 ;
+         if(partiesTouchees[indice] ==c) 
+        	 return true;
+        return false;
 	}
 	
 	public boolean estTouche() {
