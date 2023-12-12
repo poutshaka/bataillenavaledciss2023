@@ -62,22 +62,25 @@ public GrilleNavale(int taille, int nbNavires) {
 	        }
 	        return grille.toString();
 	    }
-	    
+//____________________________________________________________________________________________________________	    
 	    public int getTaille() {
 	    return taille;
 	  }
+//____________________________________________________________________________________________________________
 	    
-	    public boolean ajouteNavire(Navire n) {
+	/*    public boolean ajouteNavire(Navire n) {
 			 if (nbNavires < navires.length && estDansGrille(n.getDebut()) && estDansGrille(n.getFin()) && !chevaucheNavire(n)) {
 		            navires[nbNavires++] = n;
 		            return true;
 		        }
 		        return false;
-		    }
+		    }*/
+//____________________________________________________________________________________________________________
 	    
 	    private boolean estDansGrille(Coordonnee c) {
 	    	return  c.getLigne()>=0 && c.getLigne() < this.taille && c.getColonne()>=0 && c.getColonne()<this.taille; //pas sur est ce que est juste
 	    }
+//_____________________________________________________________________________________________________________
 	    
 	    public boolean contientNavire(Coordonnee c) {// j'ai ajouté cette méthode pour pouvoir écrire la méthode string tosting
 	        for (int i = 0; i < navires.length; i++) {
@@ -88,6 +91,7 @@ public GrilleNavale(int taille, int nbNavires) {
 	        }
 	        return false;
 	    }
+//______________________________________________________________________________________________________________
 	    
 	    private boolean estDansTirsRecus(Coordonnee c) {
 	    	if(!estDansGrille(c)) {
