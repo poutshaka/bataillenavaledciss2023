@@ -2,10 +2,10 @@ package fr.uga.miashs.inff3.bataillenavale;
 
 import batailleNavale.Coordonnee;
 
-public class TestCoordonne {
+public class TestCoordonnee {
 
 	public static void testConstructeurs() {
-		System.out.println("test du premier constructeur: ");
+		System.out.println("Test du premier constructeur: ");
 		Coordonnee c = new Coordonnee(2, 3);
 		if (c.getLigne() != 2 || c.getColonne() != 3) {
 			System.out.println("Probleme sur constructeur, erreur sur Coordonnee(2, 3) ");
@@ -18,12 +18,39 @@ public class TestCoordonne {
 			System.out.println("Probleme sur constructeur, chifre ");
 			return;
 		} catch (IllegalArgumentException e) {
-		
-		
 		}
-		
-		
+		System.out.println("----------------");
 	}
+	
+	public static void testConstructeurString() {
+		System.out.println("Test du deuxième constructeur: ");
+	    Coordonnee c2 = new Coordonnee("D3");
+	    if (c2.getLigne() != 3 || c2.getColonne() != 2) {
+	    	System.out.println("Problème sur le constructeur, erreur sur Coordonnee(\"D3\")");
+	    	return;
+	        } else {
+	        	System.out.println("Coordonnee(\"D3\") vérifiée avec succès");  
+	         }   
+	 }
+	
+	public static void testToString() {
+		System.out.println("Test de la méthode toString(): ");
+		Coordonnee c = new Coordonnee(1, 2);
+		String expected = "B2";
+		String result = c.toString();
+
+			for (int i = 0; i < result.length(); i++) {
+    			if (result.charAt(i) != expected.charAt(i)) {
+        			System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
+        			return;
+        			}
+        		}
+
+					System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
+	}
+	
+	
+		
 	
 	
 
@@ -34,8 +61,13 @@ public class TestCoordonne {
 	
 		
 		testConstructeurs();
+		testConstructeurString();
+		testToString();
 		
-		Coordonnee c = new Coordonnee(0, 0);
+		
+		
+		//
+		/*Coordonnee c = new Coordonnee(0, 0);
 		Coordonnee c2 = new Coordonnee("A1");
 		
 		// Pruebas
@@ -45,7 +77,7 @@ public class TestCoordonne {
         System.out.println("equals(): " + c.equals(c2));
         System.out.println("voisine(): " + c.voisine(c2));
         System.out.println("compareTo(): " + c.compareTo(c2));
-        
+        */
         
        
 	}
