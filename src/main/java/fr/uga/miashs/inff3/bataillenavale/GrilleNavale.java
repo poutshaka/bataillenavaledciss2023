@@ -10,6 +10,7 @@ public class GrilleNavale {
     private int taille;
     private Coordonnee[] tirsRecus;
     private int nbTirsRecus;
+    //
  
 public GrilleNavale(int taille, int[] taillesNavires) {
 		
