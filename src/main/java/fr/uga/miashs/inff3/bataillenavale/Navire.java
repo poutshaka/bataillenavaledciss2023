@@ -1,7 +1,5 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
-import batailleNavale.Coordonnee;
-import batailleNavale.Navire;
 
 public class Navire {
 	
@@ -95,7 +93,7 @@ public class Navire {
 			if (this.contient(c))
 				return true;
 	    }for (int i=n.getDebut().getColonne();i<=n.getFin().getColonne(); i++ ) {
-	    	Coordonne c = new Coordonnee(n.getDebut().getLigne(),i);
+	    	Coordonnee c = new Coordonnee(n.getDebut().getLigne(),i);
 	        if (this.contient(c))
 	            return true;
 	        }return false;
