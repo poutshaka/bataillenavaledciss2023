@@ -63,7 +63,6 @@ public class Navire {
 	
 	public boolean touche(Navire n) {
 		/*Retourne true si et seulement si this est adjacent à n. L'adjacence par la diagonale ne compte pas.*/
-		// A REFAIRE AVEC METHODE COORDONNEE VOISINE
 	    int debutLigneThis = debut.getLigne();
 	    int finLigneThis = fin.getLigne();
 	    int debutColonneThis = debut.getColonne();
@@ -88,7 +87,7 @@ public class Navire {
 	}
 
 
-	public boolean chevauche(Navire n) {
+	public boolean chevauchebis(Navire n) {
 		/*Retourne true si et seulement si this chevauche n, c'est-à-dire que this et n occupent au moins une coordonnée en commun*/
 		for (int i=n.getDebut().getLigne();i<=n.getFin().getLigne(); i++ ) {
 			Coordonnee c = new Coordonnee(i,n.getDebut().getColonne());
@@ -100,6 +99,29 @@ public class Navire {
 	            return true;
 	        }return false;
 	    }
+	
+	public boolean chevauche(Navire n) {
+		/*Retourne true si et seulement si this est adjacent à n. L'adjacence par la diagonale ne compte pas.*/
+	    int debutLigneThis = debut.getLigne();
+	    int finLigneThis = fin.getLigne();
+	    int debutColonneThis = debut.getColonne();
+	    int finColonneThis = fin.getColonne();
+	
+	    
+	    int debutLigneN = n.debut.getLigne();
+	    int finLigneN = n.fin.getLigne();
+	    int debutColonneN = n.debut.getColonne();
+	    int finColonneN = n.fin.getColonne();
+	
+	 
+	    boolean chevauchementHorizontale = (finLigneThis >= debutLigneN && debutLigneThis <= finLigneN) &&
+	                                   (debutColonneThis == finColonneN || finColonneThis == debutColonneN);
+	
+	    boolean chevauchementVerticale = (finColonneThis >= debutColonneN && debutColonneThis <= finColonneN) &&
+	                                 (debutLigneThis == finLigneN || finLigneThis == debutLigneN);
+	
+	    return chevauchementHorizontale || chevauchementVerticale;
+	}
 	        
 
 	public boolean recoitTir(Coordonnee c) {
@@ -114,11 +136,17 @@ public class Navire {
 	
 	public boolean estTouche(Coordonnee c) {
 		/* Retourne true si et seulement si this a été touché par un tir en c. */
-		
-		int indice = estVertical() ? c.getLigne() - debut.getLigne() + 1 : c.getColonne() - debut.getColonne() + 1 ;
-         if(partiesTouchees[indice] ==c) 
-        	 return true;
-        return false;
+		if (estVertical()) {
+			for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
+				if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()].equals(c))
+					return true;
+			}return false;
+		} else {
+		    for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
+				if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()].equals(c))
+					return true;
+			}return false;
+		}
 	}
 	
 	public boolean estTouche() {
