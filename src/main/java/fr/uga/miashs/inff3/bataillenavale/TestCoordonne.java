@@ -38,8 +38,7 @@ public class TestCoordonnee {
 		Coordonnee c = new Coordonnee(1, 2);
 		String expected = "B2";
 		String result = c.toString();
-
-
+		
 		    if (result.equals(expected)) {
 		        System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
 		    } else {
