@@ -62,6 +62,7 @@ public class Navire {
 		}
 	
 	
+	
 	public boolean touche(Navire n) {
 		/*Retourne true si et seulement si this est adjacent à n. L'adjacence par la diagonale ne compte pas.*/
 	    int debutLigneThis = debut.getLigne();
@@ -85,6 +86,7 @@ public class Navire {
 	                                  debutLigneThis == finLigneN || finLigneThis == debutLigneN);
 	
 	    return adjacenceHorizontale || adjacenceVerticale;
+	    
 	}
 
 
