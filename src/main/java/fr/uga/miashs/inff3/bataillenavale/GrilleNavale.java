@@ -37,30 +37,30 @@ public GrilleNavale(int taille, int nbNavires) {
 	
 }
 	  public String toString() {
-	        StringBuilder grid = new StringBuilder();
-	        grid.append(" ");
+	        StringBuffer grille = new StringBuffer();
+	        grille.append(" ");
 	        for (int i = 0; i < taille; i++) {
-	            grid.append((char) ('A' + i)).append(" ");
+	            grille.append((char) ('A' + i)).append(" ");
 	        }
-	        grid.append("\n");
+	        grille.append("\n");
 
 	        for (int i = 0; i < taille; i++) {
-	            grid.append(i + 1).append(" ");
+	            grille.append(i + 1).append(" ");
 	            for (int j = 0; j < taille; j++) {
 	                Coordonnee c = new Coordonnee(i, j);
 	                if (estTouche(c)) {
-	                    grid.append("X ");
+	                    grille.append("X ");
 	                } else if (estALEau(c)) {
-	                    grid.append("O ");
+	                    grille.append("O ");
 	                } else if (contientNavire(c)) {//normalement c'est la méthode contient de la classe navir
-	                    grid.append("# ");
+	                    grille.append("# ");
 	                } else {
-	                    grid.append(". ");
+	                    grille.append(". ");
 	                }
 	            }
-	            grid.append("\n");
+	            grille.append("\n");
 	        }
-	        return grid.toString();
+	        return grille.toString();
 	    }
 	    
 	    public int getTaille() {
@@ -87,6 +87,28 @@ public GrilleNavale(int taille, int nbNavires) {
 	            }
 	        }
 	        return false;
+	    }
+	    
+	    private boolean estDansTirsRecus(Coordonnee c) {
+	    	for(int i=0; i<tirsRecus.length; i++) {
+	    		 if(tirsRecus[i].equals(c))
+	    			return true;
+	    }
+	    	return false;
+	    }
+	    
+	    private boolean ajouteDansTirsRecus(Coordonnee c) {
+	    	
+	    	if(!estDansTirsRecus(c)) {
+	    		tirsRecus[nbTirsRecus++]=c;
+	    		return true;
+	   }
+	    	return false;
+	    }
+	    
+	    public boolean recoitTir(Coordonnee c) {
+	    	if(!estDansTirsRecus(c))
+	    		ajouteDansTirsRecus(c)
 	    }
 	    
 	    public boolean estTouche(Coordonnee c) {
@@ -125,4 +147,4 @@ public GrilleNavale(int taille, int nbNavires) {
 	    }
 
 }
-}
+
