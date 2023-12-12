@@ -1,3 +1,4 @@
+
 package fr.uga.miashs.inff3.bataillenavale;
 
 
@@ -62,6 +63,7 @@ public class Navire {
 	
 	public boolean touche(Navire n) {
 		/*Retourne true si et seulement si this est adjacent à n. L'adjacence par la diagonale ne compte pas.*/
+		// A REFAIRE AVEC METHODE COORDONNEE VOISINE
 	    int debutLigneThis = debut.getLigne();
 	    int finLigneThis = fin.getLigne();
 	    int debutColonneThis = debut.getColonne();
