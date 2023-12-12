@@ -15,7 +15,6 @@ public class JoueurTexte extends JoueurAvecGrille {
 		super(g);
 	}
 
-
     
 
     // Méthode pour afficher les étapes de l'attaque à la console pour l'attaque
