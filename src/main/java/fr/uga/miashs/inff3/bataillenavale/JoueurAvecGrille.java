@@ -13,6 +13,7 @@ private GrilleNavale grille;
 	
 	public JoueurAvecGrille(GrilleNavale g) {
 		/*permet d'obtenir un joueur jouant sur une grille navale g.*/
+		super(g.getTaille());
 		this.grille = g;
 	}
 	
