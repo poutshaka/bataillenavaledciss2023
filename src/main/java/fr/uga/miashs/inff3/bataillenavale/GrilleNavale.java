@@ -10,7 +10,32 @@ public class GrilleNavale {
     private int taille;
     private Coordonnee[] tirsRecus;
     private int nbTirsRecus;
+    //
  
+public GrilleNavale(int taille, int[] taillesNavires) {
+		
+		if (taille < 0 || taille > 26)
+			throw new IllegalArgumentException("taille de la grille incorrecte");
+		
+		this.taille = taille; 
+		this.navires = new Navire [taillesNavires.length];
+		this.tirsRecus = new Coordonnee [taille * taille]; 
+		this.nbTirsRecus = 0;
+		this.nbNavires = 0; 
+			
+	}
+
+public GrilleNavale(int taille, int nbNavires) {
+	if (taille < 0 || taille > 26)
+		throw new IllegalArgumentException("taille de la grille incorrecte");
+	
+	this.taille = taille; 
+	this.navires = new Navire [nbNavires]; 
+	this.tirsRecus = new Coordonnee [taille * taille]; 
+	this.nbNavires = 0; 
+	this.nbTirsRecus = 0; 
+	
+}
 	  public String toString() {
 	        StringBuilder grid = new StringBuilder();
 	        grid.append(" ");
@@ -41,6 +66,14 @@ public class GrilleNavale {
 	    public int getTaille() {
 	    return taille;
 	  }
+	    
+	    public boolean ajouteNavire(Navire n) {
+			 if (nbNavires < navires.length && estDansGrille(n.getDebut()) && estDansGrille(n.getFin()) && !chevaucheNavire(n)) {
+		            navires[nbNavires++] = n;
+		            return true;
+		        }
+		        return false;
+		    }
 	    
 	    private boolean estDansGrille(Coordonnee c) {
 	    	return  c.getLigne()>=0 && c.getLigne() < this.taille && c.getColonne()>=0 && c.getColonne()<this.taille; //pas sur est ce que est juste

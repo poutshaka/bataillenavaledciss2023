@@ -1,7 +1,6 @@
+
 package fr.uga.miashs.inff3.bataillenavale;
 
-import batailleNavale.Coordonnee;
-import batailleNavale.Navire;
 
 public class Navire {
 	
@@ -90,18 +89,41 @@ public class Navire {
 	}
 
 
-	public boolean chevauche(Navire n) {
+	public boolean chevauchebis(Navire n) {
 		/*Retourne true si et seulement si this chevauche n, c'est-à-dire que this et n occupent au moins une coordonnée en commun*/
 		for (int i=n.getDebut().getLigne();i<=n.getFin().getLigne(); i++ ) {
 			Coordonnee c = new Coordonnee(i,n.getDebut().getColonne());
 			if (this.contient(c))
 				return true;
 	    }for (int i=n.getDebut().getColonne();i<=n.getFin().getColonne(); i++ ) {
-	    	Coordonne c = new Coordonnee(n.getDebut().getLigne(),i);
+	    	Coordonnee c = new Coordonnee(n.getDebut().getLigne(),i);
 	        if (this.contient(c))
 	            return true;
 	        }return false;
 	    }
+	
+	public boolean chevauche(Navire n) {
+		/*Retourne true si et seulement si this est adjacent à n. L'adjacence par la diagonale ne compte pas.*/
+	    int debutLigneThis = debut.getLigne();
+	    int finLigneThis = fin.getLigne();
+	    int debutColonneThis = debut.getColonne();
+	    int finColonneThis = fin.getColonne();
+	
+	    
+	    int debutLigneN = n.debut.getLigne();
+	    int finLigneN = n.fin.getLigne();
+	    int debutColonneN = n.debut.getColonne();
+	    int finColonneN = n.fin.getColonne();
+	
+	 
+	    boolean chevauchementHorizontale = (finLigneThis >= debutLigneN && debutLigneThis <= finLigneN) &&
+	                                   (debutColonneThis == finColonneN || finColonneThis == debutColonneN);
+	
+	    boolean chevauchementVerticale = (finColonneThis >= debutColonneN && debutColonneThis <= finColonneN) &&
+	                                 (debutLigneThis == finLigneN || finLigneThis == debutLigneN);
+	
+	    return chevauchementHorizontale || chevauchementVerticale;
+	}
 	        
 
 	public boolean recoitTir(Coordonnee c) {
