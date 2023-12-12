@@ -90,60 +90,84 @@ public GrilleNavale(int taille, int nbNavires) {
 	    }
 	    
 	    private boolean estDansTirsRecus(Coordonnee c) {
-	    	for(int i=0; i<tirsRecus.length; i++) {
-	    		 if(tirsRecus[i].equals(c))
-	    			return true;
-	    }
-	    	return false;
-	    }
+	    	if(!estDansGrille(c)) {
+	    		return false; 
+	    	} else 
+	    		if (nbTirsRecus != 0) {
+	    			for (int i = 0; i < nbTirsRecus; i++) {
+	    				if (this.tirsRecus[i].equals(c)) {
+	    					return true;
+	    				}
+	    			}
+	    		}
+	    		return false;
+
+	    	}
+//____________________________________________________________________________________________________
 	    
 	    private boolean ajouteDansTirsRecus(Coordonnee c) {
-	    	if(!estDansTirsRecus(c)) {
+	    	
+	    	if(!estDansTirsRecus(c)) 
+	    		return true; 
+	    		
 	    		tirsRecus[nbTirsRecus++]=c;
 	    		return true;
-	   }
-	    	return false;
 	    }
-	    
+ //__________________________________________________________________________________________________	    
+	   
 	    public boolean recoitTir(Coordonnee c) {
-	    	if(!estDansTirsRecus(c))
-	    		ajouteDansTirsRecus(c)
-	    }
+			boolean tir = ajouteDansTirsRecus(c);
+			boolean touche = false;
+			if (tir) {
+				int i = 0;
+				while (i < nbNavires && !touche) {
+					if (navires[i].recoitTir(c))
+						touche = true;
+					i++;
+				}
+			}
+
+			return touche;
+		}
+
+//____________________________________________________________________________________________________
 	    
 	    public boolean estTouche(Coordonnee c) {
-	    	return estDansTirsRecus(c) && contientNavire(c); // 
-	    	/*for (int i = 0; i < navires.length; i++) {
-	    	    Navire n = navires[i] ;
-	            if (n.contient(c)) {
-	                return true;
-	            }
-	        }
-	    	return false;*/
-	    }
+	 
+	    	for (int i = 0; i < nbNavires; i++) {
+	    		if (this.navires[i].estTouche(c))
+					
+					return true;
+			}
+			return false;
+		}
+//______________________________________________________________________________________________________	    	   
 	    
 	    public boolean estALEau(Coordonnee c) {
-	        return !estDansTirsRecus(c) && !estTouche(c); // normalement on peut faire seulement la condition !estTouche 
+	        return !(estTouche(c)); // normalement on peut faire seulement la condition !estTouche 
 	    }
-	    
+//______________________________________________________________________________________________________	    
+	  
+	   
 	    public boolean estCoule(Coordonnee c) {
-	        for (Navire n : navires) {
-	            if (n.contient(c) && n.estCoule()) {
-	                return true;
-	            }
-	        }
-
-	        return false;
+	    	
+	    	for(int i=0; i<nbNavires; i++) {
+	    		
+	    		if (this.navires[i].estTouche(c) && this.navires[i].estCoule()) {
+	    	return true; 
+	    		}
+	    	}
+	    		return false; 
 	    }
-	    
+//________________________________________________________________________________________________________
 	    public boolean perdu() {
-	        for (Navire n : navires) {
-	            if (!n.estCoule()) {
-	                return false;
-	            }
-	        }
-
-	        return true;
-	    }
+	    	
+	    		for (int i = 0; i < this.nbNavires; i++)
+	    			if (!(this.navires[i].estCoule()))
+	    				return false;
+	    		
+	    		return true;
+	    	}
 
 }
 
