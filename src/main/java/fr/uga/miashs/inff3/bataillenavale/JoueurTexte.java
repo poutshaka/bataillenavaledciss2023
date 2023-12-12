@@ -18,12 +18,12 @@ public class JoueurTexte extends JoueurAvecGrille {
     
 
     // Méthode pour afficher les étapes de l'attaque à la console pour l'attaque
-    public void retourAttaque(Coordonnee c, int etat) {
+    protected void retourAttaque(Coordonnee c, int etat) {
         System.out.println("Attaque en " + c);
     }
 
     // Méthode pour afficher les étapes de la défense à la console pour la défense
-    public void retourDefense(Coordonnee c, int etat) {
+    protected void retourDefense(Coordonnee c, int etat) {
         System.out.println("Attaqué en " + c + " - Résultat : " + etat);
     }
     
