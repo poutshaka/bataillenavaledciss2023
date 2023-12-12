@@ -1,3 +1,4 @@
+
 package fr.uga.miashs.inff3.bataillenavale;
 
 import batailleNavale.Coordonnee;
