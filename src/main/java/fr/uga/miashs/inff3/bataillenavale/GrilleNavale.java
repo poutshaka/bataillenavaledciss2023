@@ -271,7 +271,12 @@ public class GrilleNavale {
 //Il faut vérifier que la coordonnée soit dans la grille et que ajouteDansTirsRecus soit vrai puis vérifier que la coordonnée soit bien celle d'un navire touché
 	    if(!estDansTirsRecus(c))
 	    	ajouteDansTirsRecus(c);
+	   return true;
 	    }
+<<<<<<< HEAD
+>>>>>>> branch 'main' of https://github.com/poutshaka/bataillenavaledciss2023
+=======
+	
 >>>>>>> branch 'main' of https://github.com/poutshaka/bataillenavaledciss2023
 
 	public boolean estTouche(Coordonnee c) {
