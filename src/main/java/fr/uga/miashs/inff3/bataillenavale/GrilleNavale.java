@@ -122,27 +122,6 @@ public class GrilleNavale {
 		return c.getLigne() >= 0 && c.getLigne() < this.taille -1  && c.getColonne() >= 0 && c.getColonne() < this.taille -1 ; 
 	}
 
-//_______________________________________________________________________________________________
-
-
-	       /* for (int i = 0; i < taille; i++) {
-	            grille.append(i + 1).append(" ");
-	            for (int j = 0; j < taille; j++) {
-	                Coordonnee c = new Coordonnee(i, j);
-	                if (estTouche(c)) {
-	                    grille.append("X ");
-	                } else if (estALEau(c)) {
-	                    grille.append("O ");
-	                } else if (contientNavire(c)) {//normalement c'est la méthode contient de la classe navir
-	                    grille.append("# ");
-	                } else {
-	                    grille.append(". ");
-	                }
-	            }
-	            grille.append("\n");
-	        }
-	        return grille.toString();
-	    }*/
 
  
 //____________________________________________contientNavire_________________________________________________________________
