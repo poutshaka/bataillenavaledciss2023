@@ -52,20 +52,19 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public boolean voisine(Coordonnee c) {
+	/*Retourne true si et seulement si this est une coordonnée voisine (verticalement ou horizontalement) de c.*/
 		return (((this.colonne == c.colonne) && ((this.ligne == c.ligne + 1) || (this.ligne == c.ligne - 1))) || 
 				((this.ligne == c.ligne) && ((this.colonne == c.colonne+1) || (this.colonne == c.colonne - 1))));
-			
-		}
+	}
     
-	
 	public int compareTo(Coordonnee c) {
-		if ((this.ligne == c.ligne )&& (this.colonne == c.colonne))
+	/*Retourne le résultat de la comparaison de this et de c. Une coordonnée est considérée inférieure à une autre, si elle se trouve sur une ligne inférieure ou si elle se trouve sur la même ligne mais sur une colonne inférieure.*/
+		if (this.equals(c))
 			return 0;
-		else if ((this.ligne != c.ligne) && (this.colonne == c.colonne))
+		else if (this.ligne != c.ligne)
 			return this.ligne - c.ligne;
 		else
 			return this.colonne - c.colonne; 
-
 	}
 	
 }
