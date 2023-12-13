@@ -12,13 +12,15 @@ public class Navire {
 
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
 		/*permet d'obtenir un navire débutant en debut et de taille longueur. Ce navire est disposé verticalement si estVertical vaut true, horizontalement sinon.*/
-	        this.debut = debut;
-	        if (estVertical) 
-	            this.fin = new Coordonnee (debut.getLigne() + longueur -1, debut.getColonne());
-	        else 
-	            this.fin = new Coordonnee (debut.getLigne(), debut.getColonne() + longueur -1);
-	        this.partiesTouchees = new Coordonnee[longueur];
-	        this.nbTouchees = 0;
+		if (longueur < 1) {
+            throw new IllegalArgumentException("La longueur du navire doit être au moins 1");
+        }this.debut = debut;
+	    if (estVertical) 
+	    	this.fin = new Coordonnee (debut.getLigne() + longueur -1, debut.getColonne());
+	    else 
+	    	this.fin = new Coordonnee (debut.getLigne(), debut.getColonne() + longueur -1);
+	    this.partiesTouchees = new Coordonnee[longueur];
+	    this.nbTouchees = 0;
 		}
 
 
