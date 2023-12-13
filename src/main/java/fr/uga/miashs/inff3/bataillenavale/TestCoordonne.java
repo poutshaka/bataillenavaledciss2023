@@ -35,16 +35,15 @@ public class TestCoordonnee {
 	
 	public static void testToString() {
 		System.out.println("Test de la méthode toString(): ");
-		Coordonnee c = new Coordonnee(1, 2);
-		String expected = "B2";
-		String result = c.toString();
-		
-		    if (result.equals(expected)) {
-		        System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
-		    } else {
-		        System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
-		    
-		}
+	    Coordonnee c = new Coordonnee(0, 0);
+	    String expected = "A1";
+	    String result = c.toString();
+
+	    if (result.equals(expected)) {
+	        System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
+	    } else {
+	        System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
+	    }
 	}
 	
 	
