@@ -1,6 +1,5 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
-import batailleNavale.Coordonnee;
 
 public class TestCoordonnee {
 
@@ -36,19 +35,19 @@ public class TestCoordonnee {
 	
 		public static void testToString() {
 		    System.out.println("Test de la méthode toString(): ");
-		    Coordonnee c1 = new Coordonnee(0, 4);  // A5
+		    Coordonnee c1 = new Coordonnee(0, 0);  // A1
 	        Coordonnee c2 = new Coordonnee(2, 2);  // C3
 
-	        if ("A5".equals(c1.toString())) {
-	            System.out.println("Méthode toString() vérifiée avec succès pour c1. Résultat: " + c1.toString());
+	        if ("A1".equals(c1.toString())) {
+	            System.out.println("Problème sur la méthode toString() pour c1. Résultat obtenu: " + c1.toString() + ", Résultat attendu: A1");
 	        } else {
-	            System.out.println("Problème sur la méthode toString() pour c1. Résultat obtenu: " + c1.toString() + ", Résultat attendu: A5");
+	            System.out.println("Méthode toString() vérifiée avec succès pour c1. Résultat: " + c1.toString());
 	        }
 
 	        if ("C3".equals(c2.toString())) {
-	            System.out.println("Méthode toString() vérifiée avec succès pour c2. Résultat: " + c2.toString());
-	        } else {
 	            System.out.println("Problème sur la méthode toString() pour c2. Résultat obtenu: " + c2.toString() + ", Résultat attendu: C3");
+	        } else {
+	            System.out.println("Méthode toString() vérifiée avec succès pour c2. Résultat: " + c2.toString());
 	        }	
 	        System.out.println("----------------");
 
