@@ -7,7 +7,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	private int colonne; 
 	
 	public Coordonnee (int ligne, int colonne) {
-		/*permet d'obtenir une coordonnée de ligne i et de colonne j (indices Java).*/
+	/*permet d'obtenir une coordonnée de ligne i et de colonne j (indices Java).*/
 		if (ligne<0 || ligne>=26 || colonne<0 || colonne>=26)
 			throw new IllegalArgumentException("Les coordonnes sont hors limites.");
 		this.ligne = ligne;
@@ -15,7 +15,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public Coordonnee(String s) {
-		
+	/*permet d'obtenir une coordonnée d'après son expression donnée par s dans le système de coordonnées de la bataille navale.*/	
 		if (s.length()<2 || s.length()> 3 )
 			throw new IllegalArgumentException("Une coordonnee doit avoir au minimum 2 caracteres et au max 3 caracteres"); 
 		if (s.charAt(0)< 'A' || s.charAt(0)> 'Z' )
@@ -24,11 +24,8 @@ public class Coordonnee implements Comparable<Coordonnee> {
 				Integer.parseInt(s.substring(1));
 		}catch (NumberFormatException e) {
 			throw new IllegalArgumentException("Format incorrect");
-		}
-			
-		
-		this.ligne = s.charAt(0) - 'A'; 
-		this.colonne = Integer.parseInt(s.substring(1)) - 1;
+		} this.colonne = s.charAt(0) - 'A'; 
+		this.ligne = Integer.parseInt(s.substring(1)) - 1;
 	}
 	
 	public String toString() { 
