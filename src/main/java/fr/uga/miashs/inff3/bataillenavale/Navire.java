@@ -12,13 +12,15 @@ public class Navire {
 
 	public Navire(Coordonnee debut, int longueur, boolean estVertical) {
 		/*permet d'obtenir un navire débutant en debut et de taille longueur. Ce navire est disposé verticalement si estVertical vaut true, horizontalement sinon.*/
-	        this.debut = debut;
-	        if (estVertical) 
-	            this.fin = new Coordonnee (debut.getLigne() + longueur -1, debut.getColonne());
-	        else 
-	            this.fin = new Coordonnee (debut.getLigne(), debut.getColonne() + longueur -1);
-	        this.partiesTouchees = new Coordonnee[longueur];
-	        this.nbTouchees = 0;
+		if (longueur < 1) {
+            throw new IllegalArgumentException("La longueur du navire doit être au moins 1");
+        }this.debut = debut;
+	    if (estVertical) 
+	    	this.fin = new Coordonnee (debut.getLigne() + longueur -1, debut.getColonne());
+	    else 
+	    	this.fin = new Coordonnee (debut.getLigne(), debut.getColonne() + longueur -1);
+	    this.partiesTouchees = new Coordonnee[longueur];
+	    this.nbTouchees = 0;
 		}
 
 
@@ -55,10 +57,10 @@ public class Navire {
 
 
 	public boolean contient(Coordonnee c) {
-		/* Retourne true si et seulement si this occupe c. */
-		return(c.getColonne()== debut.getColonne() && (c.getLigne()>debut.getLigne()+1 && c.getLigne()<fin.getLigne()-1)) ||
-				(c.getLigne()== debut.getLigne() && (c.getColonne()>debut.getColonne()+1 && c.getColonne()<fin.getColonne()-1));
-		}
+	/* Retourne true si et seulement si this occupe c. */
+		return c.getLigne() >= debut.getLigne() && c.getLigne() <= fin.getLigne() &&
+	               c.getColonne() >= debut.getColonne() && c.getColonne() <= fin.getColonne();
+	}
 	
 	
 	
@@ -129,42 +131,24 @@ public class Navire {
 	public boolean recoitTir(Coordonnee c) {
 		/* Retourne true si et seulement si this contient c. Dans ce cas, c est ajoutée aux parties touchées si nécessaire*/
        if (this.contient(c)) {
-            this.nbTouchees ++;
-            int indice = estVertical() ? c.getLigne() - debut.getLigne() + 1 : c.getColonne() - debut.getColonne() + 1 ;
+            int indice = estVertical() ? c.getLigne() - debut.getLigne() : c.getColonne() - debut.getColonne();
             partiesTouchees[indice] = c;
-        }return this.contient(c);
+            this.nbTouchees ++;
+            return true;
+        }return false;
     }
+	
 	
 	
 	public boolean estTouche(Coordonnee c) {
 		/* Retourne true si et seulement si this a été touché par un tir en c. */
-		if (estVertical()) {
-			for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()].equals(c))
-					return true;
-			}return false;
-		} else {
-		    for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()].equals(c))
-					return true;
-			}return false;
-		}
+		return contient(c) && partiesTouchees[c.getLigne() - debut.getLigne()] != null;
 	}
 	
 	public boolean estTouche() {
 		/*Retourne true si et seulement si this a au moins une partie touchée.*/
-			if (estVertical()){
-				for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
-					if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()]!= null)
-						return true;
-				}return false;
-			}else {
-				for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
-					if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()]!= null)
-						return true;
-				}return false;
-			}
-		}
+		return nbTouchees > 0;
+	}
 	
 	
 	
