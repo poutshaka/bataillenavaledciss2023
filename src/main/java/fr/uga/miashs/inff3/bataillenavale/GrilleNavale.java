@@ -134,7 +134,6 @@ public class GrilleNavale {
 			}
 	}
 
-
 //----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
 // Retourne true si et seulement si c correspond � un tir re�u par this.
 
@@ -152,6 +151,7 @@ public class GrilleNavale {
 		return false;
 
 	}
+
 //________________________________________estDansGrille_____________________________________________
 	private boolean estDansGrille(Coordonnee c) {
 		/*Retourne true si et seulement si c est dans this.*/
@@ -193,21 +193,7 @@ public class GrilleNavale {
 	        }
 	        return false;
 	    }
-//_____________________________________________estDansTirsRecus_________________________________________________________________
-	    /* Retourne true si et seulement si c correspond à un tir reçu par this. */
-	    
-	    private boolean estDansTirsRecus(Coordonnee c) {
-	    	if (!estDansGrille(c)) {
-	        return false;
-	     } else if (nbTirsRecus != 0) {
-	        for (int i = 0; i < nbTirsRecus; i++) {
-	            if (this.tirsRecus[i].equals(c)) {
-	                return true;
-	            }
-	        }
-	    }
-	    return false;
-	}
+
 //________________________________________ajouteDansTirsRecus____________________________________________________________
 	    
 		 /* Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement
