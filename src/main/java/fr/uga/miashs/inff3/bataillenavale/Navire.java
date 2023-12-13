@@ -1,6 +1,7 @@
 
 package fr.uga.miashs.inff3.bataillenavale;
 
+
 public class Navire {
 	
 	private Coordonnee debut;
@@ -130,11 +131,13 @@ public class Navire {
 	public boolean recoitTir(Coordonnee c) {
 		/* Retourne true si et seulement si this contient c. Dans ce cas, c est ajoutée aux parties touchées si nécessaire*/
        if (this.contient(c)) {
-            this.nbTouchees ++;
-            int indice = estVertical() ? c.getLigne() - debut.getLigne() + 1 : c.getColonne() - debut.getColonne() + 1 ;
+            int indice = estVertical() ? c.getLigne() - debut.getLigne() : c.getColonne() - debut.getColonne();
             partiesTouchees[indice] = c;
-        }return this.contient(c);
+            this.nbTouchees ++;
+            return true;
+        }return false;
     }
+	
 	
 	
 	public boolean estTouche(Coordonnee c) {
