@@ -29,7 +29,7 @@ public class JoueurAutoIntelligent extends JoueurAuto {
     @Override
     public Coordonnee choixAttaque() {
         if (dernierEtat == TOUCHE) {
-            // Si le dernier tir a touché, essayons de tirer à côté
+            // Si le dernier tir a touché, tire à coté
             return choisirCoordonneeAdjacent(derniereAttaque);
         } else {
             // Sinon, choisissons une coordonnée aléatoire comme avant
