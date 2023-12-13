@@ -99,10 +99,6 @@ public class GrilleNavale {
 
 	}
 
-	public int getNavire() {
-		return navires.length;
-	}
-
 //----------------------------------------------- placementAuto ------------------------------------------------------------------------------------------------------------------------------------
 // Place automatiquement et al�atoirement taillesNavires.length navires dont les tailles sont donn�es dans taillesNavire.
 
