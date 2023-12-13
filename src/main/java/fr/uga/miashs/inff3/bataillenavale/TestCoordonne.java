@@ -52,7 +52,7 @@ public class TestCoordonnee {
 	
 	
 
-	//
+
 	
 
 	public static void main(String[] args) {
