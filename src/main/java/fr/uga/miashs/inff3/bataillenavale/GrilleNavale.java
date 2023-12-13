@@ -36,7 +36,7 @@ public class GrilleNavale {
 		this.taille = taille;
 		this.navires = new Navire[nbNavires];
 		this.tirsRecus = new Coordonnee[taille * taille];
-		this.nbNavires = nbNavires; // nbNavires
+		this.nbNavires = nbNavires; 
 		this.nbTirsRecus = 0;
 	}
 	
@@ -76,8 +76,8 @@ public class GrilleNavale {
 	
 	 /* Retourne true après avoir ajouté n à this si cet ajout est possible. L'ajout
 	 * est impossible si n touche ou chevauche un navire déjà présent dans this, ou
-	 * encore si n dépasse les limites de this.
-	 */
+	 * encore si n dépasse les limites de this.*/
+	 
 //chevauche est une méthode de la classe Navire il faut l'utiliser en conséquence en parcourant les différents navires
 
 	public boolean ajouteNavire(Navire n) {
@@ -142,8 +142,8 @@ public class GrilleNavale {
 	 return false;
  }else 
 		if (nbTirsRecus != 0) {
-			for (int i = 0; i < nbTirsRecus; i++) {// tirs re�us sont stock� dans un tableau voir attributs
-				if (this.tirsRecus[i].equals(c)) {// appel a la methode equals de la classe coordonee
+			for (int i = 0; i < nbTirsRecus; i++) {
+				if (this.tirsRecus[i].equals(c)) {
 					return true;
 				}
 			}
@@ -277,8 +277,5 @@ public class GrilleNavale {
 	    	}
 
 	}
-	
-
-	
 
 	
