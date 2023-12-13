@@ -33,19 +33,22 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		return " "+(char)('A' + this.colonne) + (int)(this.ligne + 1);   
 	}
 	
-	public int getLigne() {
-		return ligne;
-	}
-	
 	public int getColonne() {
+	/*Accesseur en lecture pour l'indice de colonne.*/
 		return colonne;
 	}
 	
+	public int getLigne() {
+	/*Accesseur en lecture pour l'indice de ligne.*/
+		return ligne;
+	}
+
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Coordonnee))
+	/*Retourne true si et seulement si this est équivalent à obj.*/
+		if (!(obj instanceof Coordonnee) || obj==null)
 			return false;
 		Coordonnee c = (Coordonnee) obj;
-			return (c.ligne == this.ligne) && (c.colonne == this.colonne);	 	
+			return c.ligne == this.ligne && c.colonne == this.colonne;	 	
 	}
 	
 	public boolean voisine(Coordonnee c) {
