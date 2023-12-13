@@ -1,10 +1,6 @@
 
 package fr.uga.miashs.inff3.bataillenavale;
 
-<<<<<<< HEAD
-import fr.uga.miashs.inff3.bataillenavale.Coordonnee;
-=======
->>>>>>> branch 'main' of https://github.com/poutshaka/bataillenavaledciss2023
 
 public class Navire {
 	
