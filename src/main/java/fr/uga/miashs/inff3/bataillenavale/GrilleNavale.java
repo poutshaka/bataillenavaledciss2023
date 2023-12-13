@@ -166,17 +166,15 @@ public class GrilleNavale {
 	    
 //________________________________________ajouteDansTirsRecus____________________________________________________________
 	    
-		 /* Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement
-		 * si this est modifié.*/
+		 /* Ajoute c aux tirs reçus de this si nécessaire. Retourne true si 
+		  * et seulement si this est modifié.
+		  */
 		 
-//Attention la coordonnée peut ne pas faire partie de la grille. Il faut aussi vérifier si le tableau tirsRecus n'est pas déjà plein
 	    private boolean ajouteDansTirsRecus(Coordonnee c) {
-	    	
 	    	if (!estDansTirsRecus(c)&& (estDansGrille(c) && (nbTirsRecus < tirsRecus.length))) {
 	    		tirsRecus[nbTirsRecus++]=c;
 	    		return true; 
-	    }
-	    return false; 
+	    }return false; 
 	    }
  //_____________________________________recoitTir_____________________________________________________________	    
 	    
@@ -184,7 +182,6 @@ public class GrilleNavale {
 		 * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
 		 * navire de this. */
 		 
-//Il faut vérifier que la coordonnée soit dans la grille et que ajouteDansTirsRecus soit vrai puis vérifier que la coordonnée soit bien celle d'un navire touché
 	    
 	    public boolean recoitTir(Coordonnee c) {
 			boolean tir = ajouteDansTirsRecus(c);
