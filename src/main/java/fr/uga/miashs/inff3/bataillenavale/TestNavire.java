@@ -1,19 +1,17 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
-import batailleNavale.Coordonnee;
-import batailleNavale.Navire;
 
 public class TestNavire {
 	
 	public static void testConstructorNavire() {
         System.out.println("Test du constructeur Navire : ");
 
-        // Coordenada de inicio (A1)
+        // Coordonne (A1)
         Coordonnee debut1 = new Coordonnee(0, 0);
         int longueur1 = 3;
         boolean estVertical1 = true;
 
-        // Coordenada de inicio (B2)
+        // Coordonne (B2)
         Coordonnee debut2 = new Coordonnee(1, 1);
         int longueur2 = 4;
         boolean estVertical2 = false;
