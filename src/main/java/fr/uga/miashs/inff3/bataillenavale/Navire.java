@@ -1,7 +1,6 @@
 
 package fr.uga.miashs.inff3.bataillenavale;
 
-
 public class Navire {
 	
 	private Coordonnee debut;
@@ -57,10 +56,10 @@ public class Navire {
 
 
 	public boolean contient(Coordonnee c) {
-		/* Retourne true si et seulement si this occupe c. */
-		return(c.getColonne()== debut.getColonne() && (c.getLigne()>debut.getLigne()+1 && c.getLigne()<fin.getLigne()-1)) ||
-				(c.getLigne()== debut.getLigne() && (c.getColonne()>debut.getColonne()+1 && c.getColonne()<fin.getColonne()-1));
-		}
+	/* Retourne true si et seulement si this occupe c. */
+		return c.getLigne() >= debut.getLigne() && c.getLigne() <= fin.getLigne() &&
+	               c.getColonne() >= debut.getColonne() && c.getColonne() <= fin.getColonne();
+	}
 	
 	
 	
