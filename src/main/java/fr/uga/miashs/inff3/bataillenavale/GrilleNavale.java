@@ -138,7 +138,7 @@ public class GrilleNavale {
 //----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
 // Retourne true si et seulement si c correspond � un tir re�u par this.
 
-	private boolean estDansTirsRecus(Coordonnee c) {
+	private boolean estDansTirsRecus1(Coordonnee c) {
  if(!estDansGrille(c)) {
 	 return false;
  }else 
@@ -216,7 +216,7 @@ public class GrilleNavale {
 //Attention la coordonnée peut ne pas faire partie de la grille. Il faut aussi vérifier si le tableau tirsRecus n'est pas déjà plein
 	    private boolean ajouteDansTirsRecus(Coordonnee c) {
 	    	
-	    	if (!estDansTirsRecus(c)&& (estDansGrille(c) && (nbTirsRecus < tirsRecus.length))) {
+	    	if (!estDansTirsRecus1(c)&& (estDansGrille(c) && (nbTirsRecus < tirsRecus.length))) {
 	    		tirsRecus[nbTirsRecus++]=c;
 	    		return true; 
 	    }
