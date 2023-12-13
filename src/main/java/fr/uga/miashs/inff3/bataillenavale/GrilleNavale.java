@@ -19,7 +19,7 @@ public class GrilleNavale {
 			throw new IllegalArgumentException("taille de la grille incorrecte");
 		this.taille = taille;
 		this.nbNavires = taillesNavires.length;
-		this.navires = new Navire[taillesNavires.length];
+		this.navires = new Navire[nbNavires];
 		this.tirsRecus = new Coordonnee[taille * taille];
 		this.nbTirsRecus = 0;
 		placementAuto(taillesNavires);
@@ -30,13 +30,13 @@ public class GrilleNavale {
 	 
 	public GrilleNavale(int taille, int nbNavires) {
 		
-		if (taille < 0 || taille > 26)
+		if (taille < 1 || taille > 26)
 			throw new IllegalArgumentException("taille de la grille incorrecte");
 
 		this.taille = taille;
+		this.nbNavires = nbNavires; 
 		this.navires = new Navire[nbNavires];
 		this.tirsRecus = new Coordonnee[taille * taille];
-		this.nbNavires = nbNavires; 
 		this.nbTirsRecus = 0;
 	}
 	
@@ -44,15 +44,15 @@ public class GrilleNavale {
 	public String toString() {
 		StringBuffer grille = new StringBuffer();
 		grille.append(" ");
-		for (int i = 0; i < taille; i++) {
-			grille.append((char) ('A' + i)).append(" ");
+		for (int i = 1; i <= taille; i++) {
+			grille.append((char) ('A' + i - 1)).append(" ");
 		}
 		grille.append("\n");
 
-		for (int i = 0; i < taille; i++) {
-			grille.append(i + 1).append(" ");
-			for (int j = 0; j < taille; j++) {
-				Coordonnee c = new Coordonnee(i, j);
+		for (int i = 1; i <= taille; i++) {
+			grille.append(i).append(" ");
+			for (int j = 1; j <= taille; j++) {
+				Coordonnee c = new Coordonnee(i-1, j-1);
 				if (estTouche(c)) {
 					grille.append("X ");
 				} else if (estALEau(c)) {
