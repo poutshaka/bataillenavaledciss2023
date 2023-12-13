@@ -115,28 +115,10 @@ public class GrilleNavale {
         }
 	}
 
-//----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
-// Retourne true si et seulement si c correspond � un tir re�u par this.
-
-	private boolean estDansTirsRecus1(Coordonnee c) {
- if(!estDansGrille(c)) {
-	 return false;
- }else 
-		if (nbTirsRecus != 0) {
-			for (int i = 0; i < nbTirsRecus; i++) {
-				if (this.tirsRecus[i].equals(c)) {
-					return true;
-				}
-			}
-		}
-		return false;
-
-	}
 
 //________________________________________estDansGrille_____________________________________________
 	private boolean estDansGrille(Coordonnee c) {
-		/*Retourne true si et seulement si c est dans this.*/
-//attention les numéros de lignes et colonnes vont de 0 à taille -1
+	/*Retourne true si et seulement si c est dans this.*/
 		return c.getLigne() >= 0 && c.getLigne() < this.taille -1  && c.getColonne() >= 0 && c.getColonne() < this.taille -1 ; 
 	}
 
@@ -166,15 +148,22 @@ public class GrilleNavale {
 //____________________________________________contientNavire_________________________________________________________________
 	    
 	    public boolean contientNavire(Coordonnee c) {// j'ai ajouté cette méthode pour pouvoir écrire la méthode string tosting
-	        for (int i = 0; i < navires.length; i++) {
-	            Navire n = navires[i];
-	            if (n.contient(c)) {
+	        for (Navire n : navires) {
+	            if (n.contient(c))
 	                return true;
-	            }
-	        }
-	        return false;
+	        } return false;
 	    }
 
+//----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
+// Retourne true si et seulement si c correspond à un tir reçu par this.
+
+	 private boolean estDansTirsRecus(Coordonnee c) {
+			for (int i = 0; i < tirsRecus.length; i++) {
+				if (tirsRecus[i].equals(c))
+					return true;
+			}return false;
+		}
+	    
 //________________________________________ajouteDansTirsRecus____________________________________________________________
 	    
 		 /* Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement
@@ -183,7 +172,7 @@ public class GrilleNavale {
 //Attention la coordonnée peut ne pas faire partie de la grille. Il faut aussi vérifier si le tableau tirsRecus n'est pas déjà plein
 	    private boolean ajouteDansTirsRecus(Coordonnee c) {
 	    	
-	    	if (!estDansTirsRecus1(c)&& (estDansGrille(c) && (nbTirsRecus < tirsRecus.length))) {
+	    	if (!estDansTirsRecus(c)&& (estDansGrille(c) && (nbTirsRecus < tirsRecus.length))) {
 	    		tirsRecus[nbTirsRecus++]=c;
 	    		return true; 
 	    }
