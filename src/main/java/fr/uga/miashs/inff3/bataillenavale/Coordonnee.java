@@ -15,7 +15,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public Coordonnee(String s) {
-		// A1 AA1 A26 
+		
 		if (s.length()<2 || s.length()> 3 )
 			throw new IllegalArgumentException("Une coordonnee doit avoir au minimum 2 caracteres et au max 3 caracteres"); 
 		if (s.charAt(0)< 'A' || s.charAt(0)> 'Z' )
@@ -31,7 +31,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		this.colonne = Integer.parseInt(s.substring(1)) - 1;
 	}
 	
-	public String toString() { //A12
+	public String toString() { 
 		return " "+(char)('A' + this.colonne) + (int)(this.ligne + 1);   
 	}
 	
@@ -64,6 +64,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 			return this.ligne - c.ligne;
 		else
 			return this.colonne - c.colonne; 
+
 	}
 	
 }
