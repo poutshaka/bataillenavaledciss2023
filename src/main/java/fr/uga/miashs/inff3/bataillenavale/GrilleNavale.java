@@ -1,6 +1,5 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
-
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -92,38 +91,28 @@ public class GrilleNavale {
     }
 
 //----------------------------------------------- placementAuto ------------------------------------------------------------------------------------------------------------------------------------
-// Place automatiquement et al�atoirement taillesNavires.length navires dont les tailles sont donn�es dans taillesNavire.
+// Place automatiquement et aléatoirement taillesNavires.length navires dont les tailles sont données dans taillesNavire.
 
 	public void placementAuto(int[] taillesNavires) {
-
-		int i = 0;
-		if (taillesNavires.length > this.navires.length) {
-			System.out.println("La grille doit contenir au max " + this.navires.length + " navires");
-		} else
-			while (i < taillesNavires.length) {
-				// (MIN + (MAX-MIN)*MATH.RANDOM + 1)
-				boolean estVertical = Math.random() < 0.5;
-				int lignedebut = 0;// probabilit� de tirage vert/hor 50%
-				int coldebut = 0;
-				if (estVertical) {
-					lignedebut = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
-					coldebut = (int) ((this.taille) * Math.random());
-				} else {
-					lignedebut = (int) ((this.taille) * Math.random());
-					coldebut = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
-				}
-
-				// if (lignedebut<0 || lignedebut >25 || coldebut < 0 || coldebut> 25)
-				// continue;
-
-				// int lignedebut = ((int) ( (this.taille+1)*Math.random()));
-				// int coldebut = ((int) ( (this.taille+1)*Math.random()));
-				Coordonnee coordonneedebut = new Coordonnee(lignedebut, coldebut);
-				Navire n = new Navire(coordonneedebut, taillesNavires[i], estVertical);
-				if (ajouteNavire(n)) {
-					i++;
-				}
-			}
+        for (int i = 0; i < taillesNavires.length; i++) {
+            int tailleNavire = taillesNavires[i];
+            boolean estVertical = Math.random() < 0.5;
+            int ligne;
+            int colonne;
+            if (estVertical) {
+                ligne = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
+                colonne = (int) ((this.taille) * Math.random());
+            } else {
+                ligne = (int) ((this.taille) * Math.random());
+                colonne = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
+            }Coordonnee debut = new Coordonnee(ligne, colonne);
+            Navire nouveauNavire = new Navire(debut, tailleNavire, estVertical);
+            if (ajouteNavire(nouveauNavire)) {
+                nbNavires++;
+            } else {
+                i--;
+            }
+        }
 	}
 
 //----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
