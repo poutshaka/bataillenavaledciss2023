@@ -1,5 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -201,20 +202,17 @@ public class GrilleNavale {
 //__________________________________estTouche__________________________________________________________________
 	    /* Retourne true si et seulement si un des navires présents dans this a été touché en c. */
 	    public boolean estTouche(Coordonnee c) {
-	 
-	    	for (int i = 0; i < nbNavires; i++) {
-	    		if (this.navires[i].estTouche(c))
-					
-					return true;
-			}
-			return false;
-		}
+	        for (Navire navire : navires) {
+	            if (navire.estTouche(c)) 
+	                return true;
+	        } return false;
+	    }
 //__________________________________estALEau____________________________________________________________________	    	   
 	    
 		 /* Retourne true si et seulement si c correspond à un tir reçu dans l'eau par this.*/
 		 
 	    public boolean estALEau(Coordonnee c) {
-	        return !(estTouche(c)); 
+	        return estDansTirsRecus(c) && !(estTouche(c)); 
 	    }
 //__________________________________estCoule____________________________________________________________________	    
 	    
