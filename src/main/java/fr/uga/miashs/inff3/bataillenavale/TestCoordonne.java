@@ -121,9 +121,9 @@ public class TestCoordonnee {
 		    System.out.println("Test de la méthode compareTo(): ");
 		    
 		    Coordonnee c1 = new Coordonnee(2, 5);
-		    Coordonnee c2 = new Coordonnee(2, 4); // Misma fila, columna menor
-		    Coordonnee c3 = new Coordonnee(3, 7); // Fila mayor, misma columna
-		    Coordonnee c4 = new Coordonnee(2, 5); // Igual a c1
+		    Coordonnee c2 = new Coordonnee(2, 4); // Meme ligne, colonne menor
+		    Coordonnee c3 = new Coordonnee(3, 7); // ligne mayor, meme colone
+		    Coordonnee c4 = new Coordonnee(2, 5); // Egal a c1
 
 	
 		    if (c1.compareTo(c2) > 0) {
