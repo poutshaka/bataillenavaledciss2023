@@ -1,11 +1,13 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+import batailleNavale.Coordonnee;
+
 public class TestCoordonnee {
 
 	public static void testConstructeurs() {
 		System.out.println("Test du premier constructeur: ");
-		Coordonnee c = new Coordonnee(2, 3);
-		if (c.getLigne() != 2 || c.getColonne() != 3) {
+		Coordonnee c = new Coordonnee(2, 5);
+		if (c.getLigne() != 2 || c.getColonne() != 5) {
 			System.out.println("Probleme sur constructeur, erreur sur Coordonnee(2, 3) ");
 			return;
 		} else {
@@ -22,26 +24,33 @@ public class TestCoordonnee {
 	
 		public static void testConstructeurString() {
 	        System.out.println("Test du deuxième constructeur: ");
-	        Coordonnee c2 = new Coordonnee("D3");
-	        if (c2.getLigne() != 3 || c2.getColonne() != 2) {
-	            System.out.println("Problème sur le constructeur, erreur sur Coordonnee(\"D3\")");
+	        Coordonnee c2 = new Coordonnee("C6");
+	        if (c2.getLigne() != 2 || c2.getColonne() != 5) {
+	            System.out.println("Problème sur le constructeur, erreur sur Coordonnee(\"C6\")");
 	            return;
 	        } else {
-	            System.out.println("Coordonnee(\"D3\") vérifiée avec succès");   
+	            System.out.println("Coordonnee(\"C6\") vérifiée avec succès");   
 	     }   System.out.println("----------------");
 	   }
-	   
+		
+	
 		public static void testToString() {
 		    System.out.println("Test de la méthode toString(): ");
-		    Coordonnee c = new Coordonnee(0, 0);
-		    String expected = "A1";
-		    String result = c.toString();
+		    Coordonnee c1 = new Coordonnee(0, 4);  // A5
+	        Coordonnee c2 = new Coordonnee(2, 2);  // C3
 
-		    if (result.equals(expected)) {
-		        System.out.println("Méthode toString() vérifiée avec succès. Résultat: " + result);
-		    } else {
-		        System.out.println("Probleme sur la méthode toString(). Résultat obtenu: " + result + ", Résultat attendu: " + expected);
-		    }	System.out.println("----------------");
+	        if ("A5".equals(c1.toString())) {
+	            System.out.println("Méthode toString() vérifiée avec succès pour c1. Résultat: " + c1.toString());
+	        } else {
+	            System.out.println("Problème sur la méthode toString() pour c1. Résultat obtenu: " + c1.toString() + ", Résultat attendu: A5");
+	        }
+
+	        if ("C3".equals(c2.toString())) {
+	            System.out.println("Méthode toString() vérifiée avec succès pour c2. Résultat: " + c2.toString());
+	        } else {
+	            System.out.println("Problème sur la méthode toString() pour c2. Résultat obtenu: " + c2.toString() + ", Résultat attendu: C3");
+	        }	
+	        System.out.println("----------------");
 
 		}
 		
@@ -121,9 +130,9 @@ public class TestCoordonnee {
 		    System.out.println("Test de la méthode compareTo(): ");
 		    
 		    Coordonnee c1 = new Coordonnee(2, 5);
-		    Coordonnee c2 = new Coordonnee(2, 4); // Meme ligne, colonne menor
-		    Coordonnee c3 = new Coordonnee(3, 7); // ligne mayor, meme colone
-		    Coordonnee c4 = new Coordonnee(2, 5); // Egal a c1
+		    Coordonnee c2 = new Coordonnee(2, 4); // Misma fila, columna menor
+		    Coordonnee c3 = new Coordonnee(3, 7); // Fila mayor, misma columna
+		    Coordonnee c4 = new Coordonnee(2, 5); // Igual a c1
 
 	
 		    if (c1.compareTo(c2) > 0) {
@@ -146,17 +155,6 @@ public class TestCoordonnee {
 		}
 
 
-
-
-		
-		
-	
-	
-	
-
-	
-	
-
 	
 
 	public static void main(String[] args) {
@@ -170,6 +168,5 @@ public class TestCoordonnee {
 		testEquals();
 		testVoisine();
 		testCompareTo();
-		
 	}
 }
