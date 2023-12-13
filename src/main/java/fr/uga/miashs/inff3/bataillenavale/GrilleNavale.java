@@ -15,14 +15,14 @@ public class GrilleNavale {
 		 */
 
 	public GrilleNavale(int taille, int[] taillesNavires) {
-		if (taille < 0 || taille > 26)
+		if (taille < 1 || taille > 26)
 			throw new IllegalArgumentException("taille de la grille incorrecte");
-
 		this.taille = taille;
+		this.nbNavires = taillesNavires.length;
 		this.navires = new Navire[taillesNavires.length];
 		this.tirsRecus = new Coordonnee[taille * taille];
 		this.nbTirsRecus = 0;
-		this.nbNavires = taillesNavires.length ;
+		placementAuto(taillesNavires);
 	}
 //____________________________Constructeur 2___________________________________________________
 	 
@@ -161,7 +161,7 @@ public class GrilleNavale {
 
 //_______________________________________________________________________________________________
 
-<<<<<<< HEAD
+
 	       /* for (int i = 0; i < taille; i++) {
 	            grille.append(i + 1).append(" ");
 	            for (int j = 0; j < taille; j++) {
