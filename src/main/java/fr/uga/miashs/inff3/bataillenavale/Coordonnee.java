@@ -7,9 +7,9 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	private int colonne; 
 	
 	public Coordonnee (int ligne, int colonne) {
+		/*permet d'obtenir une coordonnée de ligne i et de colonne j (indices Java).*/
 		if (ligne<0 || ligne>=26 || colonne<0 || colonne>=26)
 			throw new IllegalArgumentException("Les coordonnes sont hors limites.");
-		
 		this.ligne = ligne;
 		this.colonne = colonne;
 	}
