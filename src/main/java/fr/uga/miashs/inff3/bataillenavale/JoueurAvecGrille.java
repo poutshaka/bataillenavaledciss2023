@@ -4,6 +4,10 @@ package fr.uga.miashs.inff3.bataillenavale;
 public abstract class JoueurAvecGrille extends Joueur {
 	
 private GrilleNavale grille;
+
+	public GrilleNavale getGrille() {
+		return grille;
+	}
 	
 	public JoueurAvecGrille(GrilleNavale g, String nom) {
 		/*permet d'obtenir un joueur de nom nom et jouant sur une grille navale g.*/

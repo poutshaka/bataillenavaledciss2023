@@ -28,5 +28,9 @@ public class TestJoueur {
         }
     }
 }
+<<<<<<< HEAD
 
 		
+=======
+//
+>>>>>>> branch 'main' of https://github.com/poutshaka/bataillenavaledciss2023
