@@ -29,6 +29,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public String toString() { 
+	/*Retourne une String exprimant this dans le système de coordonnée de la bataille navale (exemple : "C6").*/
 		return " "+(char)('A' + this.colonne) + (int)(this.ligne + 1);   
 	}
 	
