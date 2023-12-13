@@ -1,13 +1,29 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+import batailleNavale.GrilleNavale;
+
 public class TestGrilleNavale {
 
-	public TestGrilleNavale() {
-		// TODO Auto-generated constructor stub
-	}
+	public static void testConstructoresetToString() {
+        System.out.println("Test de constructores y toString:");
+
+        int tailleGrille = 5;
+        int[] taillesNavires = {3, 4, 2};
+
+        // Constructor con taillesNavires
+        GrilleNavale grille1 = new GrilleNavale(tailleGrille, taillesNavires);
+        
+        System.out.println(grille1.toString());
+
+        // Constructor con nbNavires
+        GrilleNavale grille2 = new GrilleNavale(tailleGrille, 5);
+        System.out.println(grille2.toString());
+
+        
+    }
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		testConstructoresetToString();
 
 	}
 
