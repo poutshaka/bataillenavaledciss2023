@@ -1,5 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -74,30 +75,21 @@ public class GrilleNavale {
 	}
 //___________________________________________Ajouter un Navire____________________________________________________	
 	
-	 /* Retourne true après avoir ajouté n à this si cet ajout est possible. L'ajout
-	 * est impossible si n touche ou chevauche un navire déjà présent dans this, ou
-	 * encore si n dépasse les limites de this.*/
-	 
-//chevauche est une méthode de la classe Navire il faut l'utiliser en conséquence en parcourant les différents navires
+	 /* 
+	  * Retourne true après avoir ajouté n à this si cet ajout est possible. L'ajout
+	  * est impossible si n touche ou chevauche un navire déjà présent dans this, ou
+	  * encore si n dépasse les limites de this.
+	  */
 
 	public boolean ajouteNavire(Navire n) {
-
-		if (this.estDansGrille(n.getFin()) && this.estDansGrille(n.getDebut())) {
-			for (int i = 0; i < this.nbNavires; i++) {
-				if (this.navires[i].touche(n) || this.navires[i].chevauche(n)) {
-					
-					return false;
-				}
-			}
-
-			this.navires[nbNavires++] = n;
-			
-			return true;
-		}
-		
-		return false;
-
-	}
+        if (!estDansGrille(n.getDebut()) || !estDansGrille(n.getFin()) || !(nbNavires < navires.length))
+            return false;
+        for (Navire navire : navires) {
+            if (navire.chevauche(n) || navire.touche(n))
+                return false;
+        }navires[nbNavires++] = n;
+        return true;
+    }
 
 //----------------------------------------------- placementAuto ------------------------------------------------------------------------------------------------------------------------------------
 // Place automatiquement et al�atoirement taillesNavires.length navires dont les tailles sont donn�es dans taillesNavire.
