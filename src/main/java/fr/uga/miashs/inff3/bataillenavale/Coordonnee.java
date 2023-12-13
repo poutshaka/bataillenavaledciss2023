@@ -17,7 +17,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		char lettre = s.charAt(0);
 		int ligne = lettre - 'A';
 		int colonne =Integer.parseInt(s.substring(1)) - 1;
-		this.ligne = ligne; 
+		this.ligne = ligne;
 		this.colonne = colonne;
 	}
 	
@@ -46,13 +46,15 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public int compareTo(Coordonnee c) {
-		if ((this.ligne == c.ligne )&& (this.colonne == c.colonne))
-			return 0;
-		else if ((this.ligne != c.ligne) && (this.colonne == c.colonne))
-			
-			return this.ligne - c.ligne;
-		else
-			return this.colonne - c.colonne; 
+		if (this.ligne < c.ligne )
+			return -1; 
+		if (this.ligne > c.ligne)
+			return 1; 
+		if (this.colonne < c.colonne)
+			return -1; 
+		if (this.colonne > c.colonne)
+			return 1;
+		return 0;
 	}
 	
 }
