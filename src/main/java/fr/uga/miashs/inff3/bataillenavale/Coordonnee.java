@@ -45,7 +45,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 
 	public boolean equals(Object obj) {
 	/*Retourne true si et seulement si this est équivalent à obj.*/
-		if (!(obj instanceof Coordonnee) || obj==null)
+		if (obj==null || !(obj instanceof Coordonnee))
 			return false;
 		Coordonnee c = (Coordonnee) obj;
 			return c.ligne == this.ligne && c.colonne == this.colonne;	 	
