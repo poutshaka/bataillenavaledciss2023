@@ -9,20 +9,30 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	public Coordonnee (int ligne, int colonne) {
 		if (ligne<0 || ligne>=26 || colonne<0 || colonne>=26)
 			throw new IllegalArgumentException("Les coordonnes sont hors limites.");
+		
 		this.ligne = ligne;
-		this.colonne = ligne;
-	}
-	
-	public Coordonnee(String s) {
-		char lettre = s.charAt(0);
-		int ligne = lettre - 'A';
-		int colonne =Integer.parseInt(s.substring(1)) - 1;
-		this.ligne = ligne; 
 		this.colonne = colonne;
 	}
 	
-	public String toString() {
-		return (char)('A' + colonne) + Integer.toString(ligne + 1);   
+	public Coordonnee(String s) {
+		// A1 AA1 A26 
+		if (s.length()<2 || s.length()> 3 )
+			throw new IllegalArgumentException("Une coordonnee doit avoir au minimum 2 caracteres et au max 3 caracteres"); 
+		if (s.charAt(0)< 'A' || s.charAt(0)> 'Z' )
+			throw new IllegalArgumentException("Les coordonnees doivent etre entre A et Z"); 
+		try {
+				Integer.parseInt(s.substring(1));
+		}catch (NumberFormatException e) {
+			throw new IllegalArgumentException("Format incorrect");
+		}
+			
+		
+		this.ligne = s.charAt(0) - 'A'; 
+		this.colonne = Integer.parseInt(s.substring(1)) - 1;
+	}
+	
+	public String toString() { //A12
+		return " "+(char)('A' + this.colonne) + (int)(this.ligne + 1);   
 	}
 	
 	public int getLigne() {
@@ -34,22 +44,23 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public boolean equals(Object obj) {
-		return ( obj instanceof Coordonnee) && (this.compareTo((Coordonnee)obj) == 0);	 	
+		if (!(obj instanceof Coordonnee))
+			return false;
+		Coordonnee c = (Coordonnee) obj;
+			return (c.ligne == this.ligne) && (c.colonne == this.colonne);	 	
 	}
 	
 	public boolean voisine(Coordonnee c) {
-		if( Math.abs(this.ligne-c.ligne) <=1 && Math.abs(this.colonne-c.colonne) <=1) {
-			return true; 
+		return (((this.colonne == c.colonne) && ((this.ligne == c.ligne + 1) || (this.ligne == c.ligne - 1))) || 
+				((this.ligne == c.ligne) && ((this.colonne == c.colonne+1) || (this.colonne == c.colonne - 1))));
 			
 		}
-            return false;
-	}
+    
 	
 	public int compareTo(Coordonnee c) {
 		if ((this.ligne == c.ligne )&& (this.colonne == c.colonne))
 			return 0;
 		else if ((this.ligne != c.ligne) && (this.colonne == c.colonne))
-			
 			return this.ligne - c.ligne;
 		else
 			return this.colonne - c.colonne; 
