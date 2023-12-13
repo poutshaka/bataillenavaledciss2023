@@ -142,33 +142,13 @@ public class Navire {
 	
 	public boolean estTouche(Coordonnee c) {
 		/* Retourne true si et seulement si this a été touché par un tir en c. */
-		if (estVertical()) {
-			for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()].equals(c))
-					return true;
-			}return false;
-		} else {
-		    for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
-				if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()].equals(c))
-					return true;
-			}return false;
-		}
+		return contient(c) && partiesTouchees[c.getLigne() - debut.getLigne()] != null;
 	}
 	
 	public boolean estTouche() {
 		/*Retourne true si et seulement si this a au moins une partie touchée.*/
-			if (estVertical()){
-				for (int i = debut.getLigne(); i <= fin.getLigne(); i++) {
-					if (partiesTouchees != null && partiesTouchees[i-debut.getColonne()]!= null)
-						return true;
-				}return false;
-			}else {
-				for (int i = debut.getColonne(); i <= fin.getColonne(); i++) {
-					if (partiesTouchees != null && partiesTouchees[i-debut.getLigne()]!= null)
-						return true;
-				}return false;
-			}
-		}
+		return nbTouchees > 0;
+	}
 	
 	
 	
