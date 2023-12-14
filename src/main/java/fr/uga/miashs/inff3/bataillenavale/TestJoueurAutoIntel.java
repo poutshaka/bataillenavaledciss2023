@@ -3,41 +3,39 @@ package fr.uga.miashs.inff3.bataillenavale;
 
 public class TestJoueurAutoIntel {
 
-    private GrilleNavale grille;
-    private JoueurAutoIntelligent joueur;
-
-    public void setUp() {
-        // Initialisez vos objets nécessaires ici, par exemple une nouvelle grille
-        grille = new GrilleNavale(10, new int[]{5, 2, 6, 2, 3});
-        joueur = new JoueurAutoIntelligent(grille, "TestPlayer");
-    }
-
-    public void testChoixAttaque() {
-        // ...
-
-        // Cas où le dernier tir a touché
-        joueur.retourAttaque(new Coordonnee(21, 1), Joueur.TOUCHE);
-        Coordonnee attaqueApresTouche = joueur.choixAttaque();
-        if (attaqueApresTouche == null) {
-            throw new AssertionError("La coordonnée après un tir réussi ne doit pas être nulle.");
-        }
-
-        // Cas où le dernier tir n'a pas touché
-        joueur.retourAttaque(new Coordonnee(2, 3), Joueur.A_L_EAU);
-        Coordonnee attaqueApresEau = joueur.choixAttaque();
-        if (attaqueApresEau == null) {
-            throw new AssertionError("La coordonnée après un tir dans l'eau ne doit pas être nulle.");
-        }
-    }
-
-    // ...
-
     public static void main(String[] args) {
-        TestJoueurAutoIntel test = new TestJoueurAutoIntel();
-        test.setUp();
-        test.testChoixAttaque();
+        // Créez une grille pour le test
+        GrilleNavale grille = new GrilleNavale(10, new int[]{5, 4, 3, 3, 2});
 
-        // Ajoutez des appels à d'autres méthodes de test au besoin
+        // Créez un joueur auto intelligent pour tester
+        JoueurAutoIntelligent joueur = new JoueurAutoIntelligent(grille, "TestPlayer");
+
+        // Affichez la grille initiale
+        System.out.println("Grille initiale du joueur:");
+        System.out.println(grille.toString());
+
+        // Effectuez quelques tirs et affichez les résultats
+        for (int i = 0; i < 5; i++) {
+            // Affichez l'état actuel de la grille avant le tir
+            System.out.println("Avant le tir " + (i + 1) + ":");
+            System.out.println(grille.toString());
+
+            // Effectuez le tir
+            Coordonnee attaque = joueur.choixAttaque();
+            boolean touche = grille.recoitTir(attaque);
+            boolean coule = grille.estCoule(attaque);
+
+            // Affichez les résultats du tir
+            System.out.println("Tir " + (i + 1) + ": Attaque à la coordonnée " + attaque.toString() +
+                    ", Résultat: Touche - " + touche + ", Coule - " + coule);
+
+            // Affichez l'état de la grille après le tir
+            System.out.println("Après le tir " + (i + 1) + ":");
+            System.out.println(grille.toString());
+
+            // Ajoutez une pause ou attendez l'entrée de l'utilisateur si nécessaire
+            // pour visualiser chaque étape du test
+            // par exemple: Scanner scanner = new Scanner(System.in); scanner.nextLine();
+        }
     }
 }
-
