@@ -21,7 +21,7 @@ import javax.swing.ButtonGroup;
 public class BatailleNaval {
 
 	private JFrame frmBatailleNavale;
-	private JTextField taille;
+	private JTextField taillegrille;
 	private JTextField LeNomJ1;
 	private JTextField LeNomJ2;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -51,15 +51,11 @@ public class BatailleNaval {
 
 	private void demarrerPartie() {
 		new Thread() {
-			public void run() {
-				if((joueur1 == null) || (joueur2 == null)) {
-					JOptionPane.showMessageDialog(frmBatailleNavale, " Veuillez donner un nom de joueur  ");	
-					return;
-				}
-				joueur1.jouerAvec(joueur2);
-			}
+		public void run() {
+		joueur1.jouerAvec(joueur2);
+		}
 		}.start();
-	}
+		}
 	
 	/**
 	 * Create the application.
@@ -84,9 +80,9 @@ public class BatailleNaval {
 		JLabel lblNewLabel = new JLabel("Taille de Grille :");
 		panelHaut.add(lblNewLabel);
 		
-		taille = new JTextField();
-		panelHaut.add(taille);
-		taille.setColumns(10);
+		taillegrille = new JTextField();
+		panelHaut.add(taillegrille);
+		taillegrille.setColumns(10);
 		
 		JPanel panelBas = new JPanel();
 		frmBatailleNavale.getContentPane().add(panelBas, BorderLayout.SOUTH);
@@ -96,16 +92,17 @@ public class BatailleNaval {
 			public void actionPerformed(ActionEvent e) {
 				 
 				
-				// Bouton lancer la partie
+				//  lancer la partie
 
-				// On récupère nos variables
-				int taille = Integer.parseInt(TailleGrille.getText());
-				String LeNomJ1 = LeNomJ1.getText();
-				String LeNomJ2 = LeNomJ2.getText();
-				String j1Type = (J1G.isSelected())?"Graphique":((j1Texte.isSelected())?"Texte":"Auto");
+				// récupération des variables
+				
+				int taille = Integer.parseInt(taillegrille.getText());
+				String NomJ1 = LeNomJ1.getText();
+				String NomJ2 = LeNomJ2.getText();
+				String j1Type = (J1G.isSelected())?"Graphique":((j1Text.isSelected())?"Texte":"Auto");
 				String j2Type = (J2G.isSelected())?"Graphique":((j2Texte.isSelected())?"Texte":"Auto");
 
-				// On instancie tout
+				// création des instances
 
 				int[] taillesNavires = {2,3,3,4,5};
 
@@ -113,36 +110,36 @@ public class BatailleNaval {
 					GrilleNavaleGraphique grilleDefense = new GrilleNavaleGraphique(taille);
 					GrilleGraphique grilleTirs = new GrilleGraphique(taille);
 					grilleDefense.placementAuto(taillesNavires);
-					j1 = new JoueurGraphique(grilleDefense, grilleTirs, LeNomJ1);
+					j1 = new JoueurGraphique(grilleDefense, grilleTirs, NomJ1);
 				}
 				else if (j1Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
-					j1 = new JoueurTexte(g, LeNomJ1);
+					j1 = new JoueurTexte(g, NomJ1);
 				}
 				else {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
-					j1 = new JoueurAuto(g, LeNomJ1);
+					j1 = new JoueurAuto(g, NomJ1);
 				}
 
 				if (j2Type == "Graphique") {
 					GrilleNavaleGraphique grilleDefense = new GrilleNavaleGraphique(taille);
 					GrilleGraphique grilleTirs = new GrilleGraphique(taille);
 					grilleDefense.placementAuto(taillesNavires);
-					j2 = new JoueurGraphique(grilleDefense, grilleTirs, LeNomJ2);
+					j2 = new JoueurGraphique(grilleDefense, grilleTirs, NomJ2);
 				}
 				else if (j2Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
-					j2 = new JoueurTexte(g, LeNomJ2);
+					j2 = new JoueurTexte(g, NomJ2);
 				}
 				else {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
-					j2 = new JoueurAuto(g, LeNomJ2);
+					j2 = new JoueurAuto(g, NomJ2);
 				}
 
-				//On lance la partie
+				
 				
 				demarrerPartie();
-				// -------------------------------------------
+			
 			}
 		});
 				//------------------------------------
@@ -261,7 +258,7 @@ public class BatailleNaval {
 		
 		LeNomJ1.setText("Joueur 1");
 		LeNomJ2.setText("Joueur 2");
-		taille.setText("10");
+		taillegrille.setText("10");
 		J1auto.setSelected(true);
 		j2Auto.setSelected(true);
 	}
