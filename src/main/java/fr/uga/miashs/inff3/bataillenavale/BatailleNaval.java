@@ -1,7 +1,7 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
 import java.awt.EventQueue;
-
+import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -20,22 +20,16 @@ import javax.swing.ButtonGroup;
 
 public class BatailleNaval {
 
-	private JFrame frmBatailleNavalle;
-	private JTextField textField;
-	private JTextField textJoueur1;
-	private JTextField textJoueur2;
+	private JFrame frmBatailleNavale;
+	private JTextField taille;
+	private JTextField LeNomJ1;
+	private JTextField LeNomJ2;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	
 	private Joueur joueur1, joueur2;
 	private int tailleGrille;
-	private void demarrerPartie() {
-	new Thread() {
-	public void run() {
-	joueur1.jouerAvec(joueur2);
-	}
-	}.start();
-	}
+	
 
 
 	/**
@@ -46,14 +40,27 @@ public class BatailleNaval {
 			public void run() {
 				try {
 					BatailleNaval window = new BatailleNaval();
-					window.frmBatailleNavalle.setVisible(true);
+					window.frmBatailleNavale.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
+	
 
+	private void demarrerPartie() {
+		new Thread() {
+			public void run() {
+				if((joueur1 == null) || (joueur2 == null)) {
+					JOptionPane.showMessageDialog(frmBatailleNavale, " Veuillez donner un nom de joueur  ");	
+					return;
+				}
+				joueur1.jouerAvec(joueur2);
+			}
+		}.start();
+	}
+	
 	/**
 	 * Create the application.
 	 */
@@ -65,34 +72,88 @@ public class BatailleNaval {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmBatailleNavalle = new JFrame();
-		frmBatailleNavalle.setTitle("Bataille Navale");
-		frmBatailleNavalle.setBounds(100, 100, 653, 478);
-		frmBatailleNavalle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmBatailleNavale = new JFrame();
+		frmBatailleNavale.setTitle("Bataille Navale");
+		frmBatailleNavale.setBounds(100, 100, 653, 478);
+		frmBatailleNavale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panelHaut = new JPanel();
-		frmBatailleNavalle.getContentPane().add(panelHaut, BorderLayout.NORTH);
+		frmBatailleNavale.getContentPane().add(panelHaut, BorderLayout.NORTH);
 		panelHaut.setLayout(new BoxLayout(panelHaut, BoxLayout.X_AXIS));
 		
 		JLabel lblNewLabel = new JLabel("Taille de Grille :");
 		panelHaut.add(lblNewLabel);
 		
-		textField = new JTextField();
-		panelHaut.add(textField);
-		textField.setColumns(10);
+		taille = new JTextField();
+		panelHaut.add(taille);
+		taille.setColumns(10);
 		
 		JPanel panelBas = new JPanel();
-		frmBatailleNavalle.getContentPane().add(panelBas, BorderLayout.SOUTH);
+		frmBatailleNavale.getContentPane().add(panelBas, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Lancer la Partie");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 
+				
+				// Bouton lancer la partie
+
+				// On récupère nos variables
+				int taille = Integer.parseInt(TailleGrille.getText());
+				String LeNomJ1 = LeNomJ1.getText();
+				String LeNomJ2 = LeNomJ2.getText();
+				String j1Type = (J1G.isSelected())?"Graphique":((j1Texte.isSelected())?"Texte":"Auto");
+				String j2Type = (J2G.isSelected())?"Graphique":((j2Texte.isSelected())?"Texte":"Auto");
+
+				// On instancie tout
+
+				int[] taillesNavires = {2,3,3,4,5};
+
+				if (j1Type == "Graphique") {
+					GrilleNavaleGraphique grilleDefense = new GrilleNavaleGraphique(taille);
+					GrilleGraphique grilleTirs = new GrilleGraphique(taille);
+					grilleDefense.placementAuto(taillesNavires);
+					j1 = new JoueurGraphique(grilleDefense, grilleTirs, LeNomJ1);
+				}
+				else if (j1Type == "Texte") {
+					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
+					j1 = new JoueurTexte(g, LeNomJ1);
+				}
+				else {
+					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
+					j1 = new JoueurAuto(g, LeNomJ1);
+				}
+
+				if (j2Type == "Graphique") {
+					GrilleNavaleGraphique grilleDefense = new GrilleNavaleGraphique(taille);
+					GrilleGraphique grilleTirs = new GrilleGraphique(taille);
+					grilleDefense.placementAuto(taillesNavires);
+					j2 = new JoueurGraphique(grilleDefense, grilleTirs, LeNomJ2);
+				}
+				else if (j2Type == "Texte") {
+					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
+					j2 = new JoueurTexte(g, LeNomJ2);
+				}
+				else {
+					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
+					j2 = new JoueurAuto(g, LeNomJ2);
+				}
+
+				//On lance la partie
+				
+				demarrerPartie();
+				// -------------------------------------------
 			}
 		});
+				//------------------------------------
+				
+				
+				
+		
 		panelBas.add(btnNewButton);
 		
 		JPanel panelCentre = new JPanel();
-		frmBatailleNavalle.getContentPane().add(panelCentre, BorderLayout.CENTER);
+		frmBatailleNavale.getContentPane().add(panelCentre, BorderLayout.CENTER);
 		panelCentre.setLayout(new GridLayout(2, 0, 0, 0));
 		
 		JPanel panelCenHaute = new JPanel();
@@ -107,29 +168,44 @@ public class BatailleNaval {
 		NomJoueur1.setHorizontalAlignment(SwingConstants.LEFT);
 		panelCenHaute.add(NomJoueur1);
 		
-		textJoueur1 = new JTextField();
-		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, textJoueur1, -3, SpringLayout.NORTH, NomJoueur1);
-		sl_panelCenHaute.putConstraint(SpringLayout.WEST, textJoueur1, 6, SpringLayout.EAST, NomJoueur1);
-		panelCenHaute.add(textJoueur1);
-		textJoueur1.setColumns(30);
+		LeNomJ1 = new JTextField();
+		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, LeNomJ1, -3, SpringLayout.NORTH, NomJoueur1);
+		sl_panelCenHaute.putConstraint(SpringLayout.WEST, LeNomJ1, 6, SpringLayout.EAST, NomJoueur1);
+		panelCenHaute.add(LeNomJ1);
+		LeNomJ1.setColumns(30);
 		
-		JRadioButton rdbtnNewRadioButton = new JRadioButton("Joueur graphique");
-		buttonGroup.add(rdbtnNewRadioButton);
-		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton, 12, SpringLayout.SOUTH, textJoueur1);
-		sl_panelCenHaute.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton, 0, SpringLayout.WEST, NomJoueur1);
-		panelCenHaute.add(rdbtnNewRadioButton);
+		JRadioButton J1G = new JRadioButton("Joueur Graphique");
+		J1G.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		buttonGroup.add(J1G);
+		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, J1G, 12, SpringLayout.SOUTH, LeNomJ1);
+		sl_panelCenHaute.putConstraint(SpringLayout.WEST, J1G, 0, SpringLayout.WEST, NomJoueur1);
+		panelCenHaute.add(J1G);
 		
-		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Joueur text");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton_1, 6, SpringLayout.SOUTH, rdbtnNewRadioButton);
-		sl_panelCenHaute.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton_1, 0, SpringLayout.WEST, NomJoueur1);
-		panelCenHaute.add(rdbtnNewRadioButton_1);
+		JRadioButton j1Text = new JRadioButton("Joueur Texte");
+		j1Text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		buttonGroup.add(j1Text);
+		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, j1Text, 6, SpringLayout.SOUTH, J1G);
+		sl_panelCenHaute.putConstraint(SpringLayout.WEST, j1Text, 0, SpringLayout.WEST, NomJoueur1);
+		panelCenHaute.add(j1Text);
 		
-		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Joueur Auto");
-		buttonGroup.add(rdbtnNewRadioButton_2);
-		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton_2, 6, SpringLayout.SOUTH, rdbtnNewRadioButton_1);
-		sl_panelCenHaute.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton_2, 0, SpringLayout.WEST, NomJoueur1);
-		panelCenHaute.add(rdbtnNewRadioButton_2);
+		JRadioButton J1auto = new JRadioButton("Joueur Auto");
+		J1auto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//-----------------------------------------------
+			}
+		});
+		buttonGroup.add(J1auto);
+		sl_panelCenHaute.putConstraint(SpringLayout.NORTH, J1auto, 6, SpringLayout.SOUTH, j1Text);
+		sl_panelCenHaute.putConstraint(SpringLayout.WEST, J1auto, 0, SpringLayout.WEST, NomJoueur1);
+		panelCenHaute.add(J1auto);
 		
 		JPanel panelCenBas = new JPanel();
 		panelCenBas.setBorder(new TitledBorder(null, "joueur 2", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -142,28 +218,52 @@ public class BatailleNaval {
 		sl_panelCenBas.putConstraint(SpringLayout.WEST, NomJoueur2, 10, SpringLayout.WEST, panelCenBas);
 		panelCenBas.add(NomJoueur2);
 		
-		textJoueur2 = new JTextField();
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, textJoueur2, -3, SpringLayout.NORTH, NomJoueur2);
-		sl_panelCenBas.putConstraint(SpringLayout.WEST, textJoueur2, 6, SpringLayout.EAST, NomJoueur2);
-		panelCenBas.add(textJoueur2);
-		textJoueur2.setColumns(30);
+		LeNomJ2 = new JTextField();
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, LeNomJ2, -3, SpringLayout.NORTH, NomJoueur2);
+		sl_panelCenBas.putConstraint(SpringLayout.WEST, LeNomJ2, 6, SpringLayout.EAST, NomJoueur2);
+		panelCenBas.add(LeNomJ2);
+		LeNomJ2.setColumns(30);
 		
-		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Joueur Graphique");
-		buttonGroup_1.add(rdbtnNewRadioButton_3);
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton_3, 16, SpringLayout.SOUTH, textJoueur2);
-		sl_panelCenBas.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton_3, 0, SpringLayout.WEST, NomJoueur2);
-		panelCenBas.add(rdbtnNewRadioButton_3);
+		JRadioButton JG2 = new JRadioButton("Joueur Graphique");
+		JG2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		buttonGroup_1.add(JG2);
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, JG2, 16, SpringLayout.SOUTH, LeNomJ2);
+		sl_panelCenBas.putConstraint(SpringLayout.WEST, JG2, 0, SpringLayout.WEST, NomJoueur2);
+		panelCenBas.add(JG2);
 		
-		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Joueur text");
-		buttonGroup_1.add(rdbtnNewRadioButton_4);
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton_4, 6, SpringLayout.SOUTH, rdbtnNewRadioButton_3);
-		sl_panelCenBas.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton_4, 0, SpringLayout.WEST, NomJoueur2);
-		panelCenBas.add(rdbtnNewRadioButton_4);
+		JRadioButton j2Text = new JRadioButton("Joueur Texte");
+		j2Text.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		buttonGroup_1.add(j2Text);
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, j2Text, 6, SpringLayout.SOUTH, JG2);
+		sl_panelCenBas.putConstraint(SpringLayout.WEST, j2Text, 0, SpringLayout.WEST, NomJoueur2);
+		panelCenBas.add(j2Text);
 		
-		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Joueur Auto");
-		buttonGroup_1.add(rdbtnNewRadioButton_5);
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, rdbtnNewRadioButton_5, 6, SpringLayout.SOUTH, rdbtnNewRadioButton_4);
-		sl_panelCenBas.putConstraint(SpringLayout.WEST, rdbtnNewRadioButton_5, 0, SpringLayout.WEST, NomJoueur2);
-		panelCenBas.add(rdbtnNewRadioButton_5);
+		JRadioButton j2Auto = new JRadioButton("Joueur Auto");
+		j2Auto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//--------------------------------------------------
+			}
+		});
+		buttonGroup_1.add(j2Auto);
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, j2Auto, 6, SpringLayout.SOUTH, j2Text);
+		sl_panelCenBas.putConstraint(SpringLayout.WEST, j2Auto, 0, SpringLayout.WEST, NomJoueur2);
+		panelCenBas.add(j2Auto);
+		
+		//----------------
+		
+		LeNomJ1.setText("Joueur 1");
+		LeNomJ2.setText("Joueur 2");
+		taille.setText("10");
+		J1auto.setSelected(true);
+		j2Auto.setSelected(true);
 	}
+	
 }

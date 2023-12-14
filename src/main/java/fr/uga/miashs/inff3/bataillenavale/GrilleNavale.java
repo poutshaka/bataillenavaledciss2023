@@ -1,6 +1,7 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
 
+
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -19,7 +20,7 @@ public class GrilleNavale {
 		if (taille < 1 || taille > 26)
 			throw new IllegalArgumentException("taille de la grille incorrecte");
 		this.taille = taille;
-		this.nbNavires = taillesNavires.length;
+		this.nbNavires = 0;
 		this.navires = new Navire[nbNavires];
 		this.tirsRecus = new Coordonnee[taille * taille];
 		this.nbTirsRecus = 0;
@@ -35,7 +36,7 @@ public class GrilleNavale {
 			throw new IllegalArgumentException("taille de la grille incorrecte");
 
 		this.taille = taille;
-		this.nbNavires = nbNavires; 
+		this.nbNavires = 0; 
 		this.navires = new Navire[nbNavires];
 		this.tirsRecus = new Coordonnee[taille * taille];
 		this.nbTirsRecus = 0;
@@ -100,6 +101,20 @@ public class GrilleNavale {
 
 	public void placementAuto(int[] taillesNavires) {
 		int i = 0;
+		while(i< taillesNavires.length) {
+			Navire newNavire ;
+			int ligne = (int) (taille * Math.random());
+			int colonne = (int) (taille * Math.random());
+			Coordonnee point = new Coordonnee(ligne,colonne);
+			boolean estvertical = Math.random()<0.5;
+			newNavire = new Navire(point, taillesNavires[i], estvertical);
+			if (ajouteNavire(newNavire))
+				i++;
+		}
+	}
+
+	public void placementAuto2(int[] taillesNavires) {
+		int i = 0;
 		while(navires[taillesNavires.length -1]==null) {
 			int ligne = (int) (taille * Math.random());
 			int colonne = (int) (taille * Math.random());
@@ -123,7 +138,7 @@ public class GrilleNavale {
 //________________________________________estDansGrille_____________________________________________
 	public boolean estDansGrille(Coordonnee c) {
 	/*Retourne true si et seulement si c est dans this.*/
-		return c.getLigne() >= 0 && c.getLigne() < this.taille -1  && c.getColonne() >= 0 && c.getColonne() < this.taille -1 ; 
+		return c.getLigne() >= 0 && c.getLigne() < this.taille  && c.getColonne() >= 0 && c.getColonne() < this.taille ; 
 	}
 
 
