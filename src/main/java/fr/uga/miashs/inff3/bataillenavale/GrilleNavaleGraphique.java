@@ -25,13 +25,13 @@ public class GrilleNavaleGraphique extends GrilleNavale {
         if (ajout) {
         	if (n.estVertical()) {
         		int colonne = n.getDebut().getColonne();
-        		for (int ligne = n.getDebut().getLigne(); ligne < n.getFin().getLigne(); ligne++) {
+        		for (int ligne = n.getDebut().getLigne(); ligne < n.getFin().getLigne() + 1; ligne++) {
         			Coordonnee c =new  Coordonnee(ligne,colonne);
         			grille.colorie(c, Color.GREEN);
         		}
         	}else {
         		int ligne = n.getDebut().getLigne();
-        		for (int colonne = n.getDebut().getColonne(); colonne < n.getFin().getColonne(); colonne++) {
+        		for (int colonne = n.getDebut().getColonne(); colonne < n.getFin().getColonne() + 1; colonne++) {
         			Coordonnee c =new  Coordonnee(ligne,colonne);
         			grille.colorie(c, Color.GREEN);
         		}
