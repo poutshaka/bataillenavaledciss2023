@@ -140,7 +140,7 @@ public class GrilleNavale {
 //----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
 // Retourne true si et seulement si c correspond à un tir reçu par this.
 
-	 private boolean estDansTirsRecus(Coordonnee c) {
+	 public boolean estDansTirsRecus(Coordonnee c) {
 			for (int i = 0; i < tirsRecus.length; i++) {
 				if (tirsRecus[i] != null && tirsRecus[i].equals(c))
 					return true;
