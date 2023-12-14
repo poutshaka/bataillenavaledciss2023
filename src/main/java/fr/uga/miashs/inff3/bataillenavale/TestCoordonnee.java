@@ -1,5 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+import batailleNavale.Coordonnee;
 
 public class TestCoordonnee {
 
@@ -24,7 +25,7 @@ public class TestCoordonnee {
 		public static void testConstructeurString() {
 	        System.out.println("Test du deuxième constructeur: ");
 	        Coordonnee c2 = new Coordonnee("C6");
-	        if (c2.getLigne() != 2 || c2.getColonne() != 5) {
+	        if (c2.getLigne() != 5 || c2.getColonne() != 2) {
 	            System.out.println("Problème sur le constructeur, erreur sur Coordonnee(\"C6\")");
 	            return;
 	        } else {
@@ -35,19 +36,20 @@ public class TestCoordonnee {
 	
 		public static void testToString() {
 		    System.out.println("Test de la méthode toString(): ");
-		    Coordonnee c1 = new Coordonnee(0, 0);  // A1
-	        Coordonnee c2 = new Coordonnee(2, 2);  // C3
+		   
+		    Coordonnee coordonnee1 = new Coordonnee(0, 1);  // B1
+	        Coordonnee coordonnee2 = new Coordonnee(2, 2);  // C3
 
-	        if ("A1".equals(c1.toString())) {
-	            System.out.println("Problème sur la méthode toString() pour c1. Résultat obtenu: " + c1.toString() + ", Résultat attendu: A1");
+	        if ("B1".equals(coordonnee1.toString())) {
+	            System.out.println("Problème sur la méthode toString() pour coordonnee1. Résultat obtenu: " + coordonnee1.toString() + ", Résultat attendu: A1");
 	        } else {
-	            System.out.println("Méthode toString() vérifiée avec succès pour c1. Résultat: " + c1.toString());
+	            System.out.println("Méthode toString() vérifiée avec succès pour coordonnee1. Résultat: " + coordonnee1.toString());
 	        }
 
-	        if ("C3".equals(c2.toString())) {
-	            System.out.println("Problème sur la méthode toString() pour c2. Résultat obtenu: " + c2.toString() + ", Résultat attendu: C3");
+	        if ("C3".equals(coordonnee2.toString())) {
+	            System.out.println("Problème sur la méthode toString() pour coordonnee2. Résultat obtenu: " + coordonnee2.toString() + ", Résultat attendu: C3");
 	        } else {
-	            System.out.println("Méthode toString() vérifiée avec succès pour c2. Résultat: " + c2.toString());
+	            System.out.println("Méthode toString() vérifiée avec succès pour coordonnee2. Résultat: " + coordonnee2.toString());
 	        }	
 	        System.out.println("----------------");
 
@@ -93,15 +95,15 @@ public class TestCoordonnee {
 
 		   
 		    if (c1.equals(c2)) {
-		        System.out.println("Méthode equals() vérifiée avec succès pour c1 et c2.");
+		        System.out.println("Méthode equals() vérifiée avec succès pour coordonnee1 et coordonnee2.");
 		    } else {
-		        System.out.println("Problème sur la méthode equals() pour c1 et c2.");
+		        System.out.println("Problème sur la méthode equals() pour coordonnee1 et coordonnee2.");
 		    }
 
 		    if (!c1.equals(c3)) {
-		        System.out.println("Méthode equals() vérifiée avec succès pour c1 et c3.");
+		        System.out.println("Méthode equals() vérifiée avec succès pour coordonnee1 et coordonnee3.");
 		    } else {
-		        System.out.println("Problème sur la méthode equals() pour c1 et c3.");
+		        System.out.println("Problème sur la méthode equals() pour coordonnee1 et c3.");
 		    }	System.out.println("----------------");
 		}
 		
@@ -113,15 +115,15 @@ public class TestCoordonnee {
 		    Coordonnee c3 = new Coordonnee(0, 0); // Coordonnee non adyacente a c1
 
 		    if (c1.voisine(c2)) {
-		        System.out.println("Méthode voisine() vérifiée avec succès pour c1 et c2.");
+		        System.out.println("Méthode voisine() vérifiée avec succès pour coordonnee1 et coordonnee2.");
 		    } else {
-		        System.out.println("Problème sur la méthode voisine() pour c1 et c2.");
+		        System.out.println("Problème sur la méthode voisine() pour coordonnee1 et coordonnee2.");
 		    }
 
 		    if (!c1.voisine(c3)) {
-		        System.out.println("Méthode voisine() vérifiée avec succès pour c1 et c3.");
+		        System.out.println("Méthode voisine() vérifiée avec succès pour coordonnee1 et coordonnee3.");
 		    } else {
-		        System.out.println("Problème sur la méthode voisine() pour c1 et c3.");
+		        System.out.println("Problème sur la méthode voisine() pour coordonnee1 et coordonnee3.");
 		    }	System.out.println("----------------");
 		}
 		
@@ -135,22 +137,22 @@ public class TestCoordonnee {
 
 	
 		    if (c1.compareTo(c2) > 0) {
-		        System.out.println("Méthode compareTo() vérifiée avec succès pour c1 > c2.");
+		        System.out.println("Méthode compareTo() vérifiée avec succès pour coordonne1 > coordonnee2.");
 		    } else {
-		        System.out.println("Problème sur la méthode compareTo() pour c1 > c2.");
+		        System.out.println("Problème sur la méthode compareTo() pour coordonne1 > coordonnee2.");
 		    }
 
 		    if (c1.compareTo(c3) < 0) {
-		        System.out.println("Méthode compareTo() vérifiée avec succès pour c1 < c3.");
+		        System.out.println("Méthode compareTo() vérifiée avec succès pour coordonne1 < coordonnnee3.");
 		    } else {
-		        System.out.println("Problème sur la méthode compareTo() pour c1 < c3.");
+		        System.out.println("Problème sur la méthode compareTo() pour coordonne1 < coordonnee3.");
 		    }
 
 		    if (c1.compareTo(c4) == 0) {
-		        System.out.println("Méthode compareTo() vérifiée avec succès pour c1 == c4.");
+		        System.out.println("Méthode compareTo() vérifiée avec succès pour coordonne1 == coordonnee4.");
 		    } else {
-		        System.out.println("Problème sur la méthode compareTo() pour c1 == c4.");
-		    }
+		        System.out.println("Problème sur la méthode compareTo() pour coordonne1 == coordonnee4.");
+		    }	System.out.println("----------------");
 		}
 
 
@@ -167,5 +169,24 @@ public class TestCoordonnee {
 		testEquals();
 		testVoisine();
 		testCompareTo();
+		
+		
+	
+		
+		Coordonnee c = new Coordonnee(0, 1);
+		Coordonnee c2 = new Coordonnee("C3");
+		
+		// Pruebass
+        System.out.println("toString(): " + c.toString());
+        System.out.println("getLigne(): " + c.getLigne());
+        System.out.println("getColonne(): " + c.getColonne());
+        System.out.println("equals(): " + c.equals(c2));
+        System.out.println("voisine(): " + c.voisine(c2));
+       
+       
+        
+       
 	}
+
 }
+
