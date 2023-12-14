@@ -1,5 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -97,25 +98,24 @@ public class GrilleNavale {
 // Place automatiquement et aléatoirement taillesNavires.length navires dont les tailles sont données dans taillesNavire.
 
 	public void placementAuto(int[] taillesNavires) {
-        for (int i = 0; i < taillesNavires.length; i++) {
-            int tailleNavire = taillesNavires[i];
-            boolean estVertical = Math.random() < 0.5;
-            int ligne;
-            int colonne;
-            if (estVertical) {
-                ligne = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
-                colonne = (int) ((this.taille) * Math.random());
-            } else {
-                ligne = (int) ((this.taille) * Math.random());
-                colonne = (int) ((this.taille - taillesNavires[i]+1) * Math.random());
-            }Coordonnee debut = new Coordonnee(ligne, colonne);
-            Navire nouveauNavire = new Navire(debut, tailleNavire, estVertical);
-            if (ajouteNavire(nouveauNavire)) {
-                nbNavires++;
-            } else {
-                i--;
-            }
-        }
+		int i = 0;
+		while(navires[taillesNavires.length -1]==null) {
+			int ligne = (int) (taille * Math.random());
+			int colonne = (int) (taille * Math.random());
+			Coordonnee point = new Coordonnee(ligne,colonne);
+			boolean estvertical = Math.random()<0.5;
+			Navire newNavire = new Navire(point, taillesNavires[i], estvertical);
+			boolean chevauchement = false;
+			
+			for (int j=0 ; j<i ; j++) {
+				if (navires[j].chevauche(newNavire)) {
+					chevauchement = true;
+				}
+			} if (newNavire.getFin().getLigne() <= taille -1 && newNavire.getFin().getColonne() <= taille - 1 && !chevauchement) {
+				navires[i] = newNavire;
+				i++;
+			}
+		}
 	}
 
 
