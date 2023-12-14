@@ -8,13 +8,14 @@ public class TestJoueurAutoIntel {
     private GrilleNavale grille;
     private JoueurAutoIntelligent joueur;
 
+    @Before
     public void setUp() {
         // Initialisez vos objets nécessaires ici, par exemple une nouvelle grille
         grille = new GrilleNavale(10, new int[]{5, 4, 3, 3, 2});
         joueur = new JoueurAutoIntelligent(grille, "TestPlayer");
     }
 
-    
+    @Test
     public void testChoixAttaque() {
         // Testez le comportement de choixAttaque() en fonction des différents scénarios possibles
 
@@ -34,3 +35,4 @@ public class TestJoueurAutoIntel {
     // Ajoutez d'autres méthodes de test au besoin
 
 }
+
