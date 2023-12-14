@@ -9,7 +9,7 @@ public class GrilleNavaleGraphique extends GrilleNavale {
 
     public GrilleNavaleGraphique(int taille) {
     /*permet d'obtenir une grille de taille taille.*/
-        super(taille,0);
+        super(taille,10);
         this.grille = new GrilleGraphique(taille);
     }
     
