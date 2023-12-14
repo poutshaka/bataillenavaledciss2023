@@ -11,7 +11,7 @@ public class TestJoueurAutoIntel {
     @Before
     public void setUp() {
         // Initialisez vos objets nécessaires ici, par exemple une nouvelle grille
-        grille = new GrilleNavale(10);
+        grille = new GrilleNavale(10, new int[]{5, 4, 3, 3, 2});
         joueur = new JoueurAutoIntelligent(grille, "TestPlayer");
     }
 
@@ -26,7 +26,7 @@ public class TestJoueurAutoIntel {
         assertTrue(grille.getTirs().contains(attaqueApresTouche));
 
         // Cas où le dernier tir n'a pas touché
-        joueur.retourAttaque(new Coordonnee(2, 2), Joueur.DANS_EAU);
+        joueur.retourAttaque(new Coordonnee(2, 2), Joueur.A_L_EAU);
         Coordonnee attaqueApresEau = joueur.choixAttaque();
         assertNotNull(attaqueApresEau);
         assertTrue(grille.getTirs().contains(attaqueApresEau));
@@ -35,3 +35,4 @@ public class TestJoueurAutoIntel {
     // Ajoutez d'autres méthodes de test au besoin
 
 }
+
