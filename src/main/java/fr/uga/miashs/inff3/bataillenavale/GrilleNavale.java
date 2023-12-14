@@ -1,7 +1,6 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
 
-
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -232,6 +231,27 @@ public class GrilleNavale {
 					return false;
 			}return true;
 		}
+	    
+		public static void main(String[] args) {
+	        // Assumez que grilleNavale est votre objet GrilleNavale
+	        GrilleNavale grilleNavale1 = new GrilleNavale(12, 3);
+	  
+	        
+	     // Afficher la grille dans la console
+	        System.out.println(grilleNavale1.toString());
+
+	        
+	        int tailleGrille = 12;
+	        int[] taillesNavires = {1, 4, 3, 5};
+	        
+	        // Assumez que grilleNavale est votre objet GrilleNavale
+	        GrilleNavale grilleNavale2 = new GrilleNavale(tailleGrille, taillesNavires);
+	  
+	        
+	     // Afficher la grille dans la console
+	        System.out.println(grilleNavale2.toString());
+	        
+	    }
 	    
 }
 	
