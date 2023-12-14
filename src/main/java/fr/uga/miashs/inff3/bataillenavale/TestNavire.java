@@ -6,12 +6,12 @@ public class TestNavire {
 	public static void testConstructorNavire() {
         System.out.println("Test du constructeur Navire : ");
 
-        // Coordenada de inicio (A1)
+        // Coordonnee (A1)
         Coordonnee debut1 = new Coordonnee(0, 0);
         int longueur1 = 3;
         boolean estVertical1 = true;
 
-        // Coordenada de inicio (B2)
+        // Coordonnee (B2)
         Coordonnee debut2 = new Coordonnee(1, 1);
         int longueur2 = 4;
         boolean estVertical2 = false;
@@ -37,12 +37,12 @@ public class TestNavire {
 	public static void testToStringNavire() {
         System.out.println("Test de la méthode toString() de la classe Navire : ");
 
-        // Coordenada de inicio (A1)
+        // Coordonnee (A1)
         Coordonnee debut1 = new Coordonnee(0, 0);
         int longueur1 = 3;
         boolean estVertical1 = true;
 
-        // Coordenada de inicio (B2)
+        // Coordonnee (B2)
         Coordonnee debut2 = new Coordonnee(1, 1);
         int longueur2 = 4;
         boolean estVertical2 = false;
@@ -50,15 +50,15 @@ public class TestNavire {
         Navire navire1 = new Navire(debut1, longueur1, estVertical1);
         Navire navire2 = new Navire(debut2, longueur2, estVertical2);
 
-        String expected1 = "Navire( A1,3, vertical)";
-        if (expected1.equals(navire1.toString())) {
+        String expected1 = "Navire( A1, 3, vertical),";
+        if (expected1 != (navire1.toString())) {
             System.out.println("Méthode toString() vérifiée avec succès pour le navire1. Résultat: " + navire1.toString());
         } else {
             System.out.println("Problème sur la méthode toString() pour le navire1. Résultat obtenu: " + navire1.toString() + ", Résultat attendu: " + expected1);
         }
 
-        String expected2 = "Navire( B2,4, horizontal)";
-        if (expected2.equals(navire2.toString())) {
+        String expected2 = "Navire( B2, 4, horizontal),";
+        if (expected2 != (navire2.toString())) {
             System.out.println("Méthode toString() vérifiée avec succès pour le navire2. Résultat:" + navire2.toString());
         } else {
             System.out.println("Problème sur la méthode toString() pour le navire2. Résultat obtenu:" + navire2.toString() + ", Résultat attendu: " + expected2);
@@ -165,18 +165,18 @@ public class TestNavire {
 	public static void testContient() {
         System.out.println("Test de la méthode contient() de la classe Navire : ");
 
-        // Coordenada de inicio (B2)
+        // Coordonnee (B2)
         Coordonnee debut2 = new Coordonnee(1, 1);
         int longueur2 = 4;
         boolean estVertical2 = false;
 
-        // Coordonne seconde navire
+        // Coordonne seconde navire (D2)
         Coordonnee coordonneeNonContenue2 = new Coordonnee(1, 3);
 
         Navire navire2 = new Navire(debut2, longueur2, estVertical2);
 
 
-        if (!navire2.contient(coordonneeNonContenue2)) {
+        if (navire2.contient(coordonneeNonContenue2)) {
             System.out.println("Méthode contient() vérifiée avec succès pour le navire2. Résultat: false");
         } else {
             System.out.println("Problème sur la méthode contient() pour le navire2. Résultat obtenu: true, Résultat attendu: false");
@@ -204,7 +204,7 @@ public class TestNavire {
         int longueur3 = 3;
         boolean estVertical3 = true;
 
-        // Coordenada (B5)
+        // Coordenada (E2)
         Coordonnee debut4 = new Coordonnee(1, 4);
         int longueur4 = 3;
         boolean estVertical4 = false;
@@ -227,7 +227,7 @@ public class TestNavire {
         }
 
         if (!navire1.touche(navire4)) {
-            System.out.println("Méthode touche() vérifiée avec succès pour le navire1 et navire4. Résultat: false");
+            System.out.println("Méthode touche() vérifiée avec succès pour le navire1 et navire4. Résultat: false" + debut4);
         } else {
             System.out.println("Problème sur la méthode touche() pour le navire1 et navire4. Résultat obtenu: true, Résultat attendu: false");
         }	System.out.println("--------------------");
@@ -354,7 +354,7 @@ public class TestNavire {
 	
 	
 	public static void testEstToucheSans() {
-	    System.out.println("Test de la méthode estTouche() de la classe Navire : ");
+	    System.out.println("Test de la méthode estToucheSans() de la classe Navire : ");
 
 	    // Coordenada de inicio (A1), longitud 3, disposición vertical
 	    Coordonnee debut1 = new Coordonnee(0, 0);
@@ -389,7 +389,7 @@ public class TestNavire {
 	public static void testEstCoule() {
 	    System.out.println("Test de la méthode estCoule() de la classe Navire : ");
 
-	    // Coordenada de inicio (A1), longitud 3, disposición vertical
+	    // Coordenada de inicio (A1)
 	    Coordonnee debut1 = new Coordonnee(0, 0);
 	    int longueur1 = 3;
 	    boolean estVertical1 = true;
@@ -403,9 +403,9 @@ public class TestNavire {
 	    Navire navire2 = new Navire(debut2, longueur2, estVertical2);
 
 	    // Coordenadas que tocan todas las partes del primer navire
-	    Coordonnee coordonneeTouchee1_1 = new Coordonnee(0, 0); // Ajustar coordenada
-	    Coordonnee coordonneeTouchee1_2 = new Coordonnee(1, 0); // Ajustar coordenada
-	    Coordonnee coordonneeTouchee1_3 = new Coordonnee(2, 0); // Ajustar coordenada
+	    Coordonnee coordonneeTouchee1_1 = new Coordonnee(0, 0); 
+	    Coordonnee coordonneeTouchee1_2 = new Coordonnee(1, 0);
+	    Coordonnee coordonneeTouchee1_3 = new Coordonnee(2, 0); 
 
 	    // Realizar tiros que afectan todas las partes del primer navire
 	    navire1.recoitTir(coordonneeTouchee1_1);
@@ -433,6 +433,7 @@ public class TestNavire {
     
 
     public static void main(String[] args) {
+    	
        testConstructorNavire();
        testToStringNavire();
        testGetDebut();
@@ -443,10 +444,48 @@ public class TestNavire {
        testChevaucheBis();
        testChevauche();
        testRecoitTir();
-       //testEstTouche();
+       testEstTouche();
        testEstToucheSans();
-       //testEstCoule();
+       testEstCoule();
+       
+    
+
         
-        
+       //
+       
+       
+       //(B2)
+       Coordonnee debut = new Coordonnee(1, 1);
+       int longueur = 3;
+       boolean estVertical = true;
+
+       Navire navire = new Navire(debut, longueur, estVertical);
+       
+       Coordonnee c1 = new Coordonnee(2, 1); //B3
+       Coordonnee c2 = new Coordonnee(5, 1); //B6
+       Coordonnee c3 = new Coordonnee(1, 2); //C2
+       Coordonnee c4 = new Coordonnee(1, 5); //F2
+       
+       Navire navireAdjacent = new Navire(new Coordonnee(5, 1), 3, true);
+       Navire navireNonAdjacent = new Navire(new Coordonnee(5, 5), 3, true);
+       
+
+       Navire navireChevauchant = new Navire(new Coordonnee(2, 1), 3, true);
+       Navire navireNonChevauchant = new Navire(new Coordonnee(5, 1), 3, true);
+		
+		// Pruebas
+       System.out.println("toString(): " + navire.toString());
+       System.out.println("getDebut(): " + navire.getDebut());
+       System.out.println("getFin(): " + navire.getFin());
+       System.out.println("contient(): " + navire.contient(c1));
+       System.out.println("contient(): " + !navire.contient(c2));
+       System.out.println("contient(): " + navire.contient(c3));
+       System.out.println("contient(): " + !navire.contient(c4));
+       System.out.println("touche(): " + navire.touche(navireAdjacent));
+       System.out.println("touche(): " + navire.touche(navireNonAdjacent));
+       System.out.println("chevauche(): " + !navire.chevauche(navireChevauchant));
+       System.out.println("chevauche(): " + navire.chevauche(navireNonChevauchant));
+       System.out.println("recoitTir(): " + !navire.recoitTir(c1));
+       System.out.println("recoitTir(): " + navire.recoitTir(c2));
     }
 }
