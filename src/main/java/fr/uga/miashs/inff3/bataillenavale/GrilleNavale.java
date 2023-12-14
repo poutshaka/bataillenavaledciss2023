@@ -53,12 +53,12 @@ public class GrilleNavale {
 			grille.append(i).append(" ");
 			for (int j = 1; j <= taille; j++) {
 				Coordonnee c = new Coordonnee(i-1, j-1);
-				if (estTouche(c)) {
+				if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
+					grille.append("# ");
+				}else if (estTouche(c)) {
 					grille.append("X ");
 				} else if (estALEau(c)) {
-					grille.append("O ");
-				} else if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
-					grille.append("# ");
+					grille.append("O "); 
 				} else {
 					grille.append(". ");
 				}
@@ -84,7 +84,7 @@ public class GrilleNavale {
         if (!estDansGrille(n.getDebut()) || !estDansGrille(n.getFin()) || !(nbNavires < navires.length))
             return false;
         for (Navire navire : navires) {
-            if (navire.chevauche(n) || navire.touche(n))
+            if (navire != null && (navire.chevauche(n) || navire.touche(n)))
                 return false;
         }navires[nbNavires++] = n;
         return true;
@@ -128,7 +128,7 @@ public class GrilleNavale {
 	    
 	    public boolean contientNavire(Coordonnee c) {// j'ai ajouté cette méthode pour pouvoir écrire la méthode string tosting
 	        for (Navire n : navires) {
-	            if (n.contient(c))
+	            if (n != null && n.contient(c))
 	                return true;
 	        } return false;
 	    }
@@ -138,7 +138,7 @@ public class GrilleNavale {
 
 	 private boolean estDansTirsRecus(Coordonnee c) {
 			for (int i = 0; i < tirsRecus.length; i++) {
-				if (tirsRecus[i].equals(c))
+				if (tirsRecus[i] != null && tirsRecus[i].equals(c))
 					return true;
 			}return false;
 		}
