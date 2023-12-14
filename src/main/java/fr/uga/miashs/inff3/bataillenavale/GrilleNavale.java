@@ -43,14 +43,17 @@ public class GrilleNavale {
 //_________________________________toString_________________________________________
 	public String toString() {
 		StringBuffer grille = new StringBuffer();
-		grille.append(" ");
+		grille.append("  ");
 		for (int i = 1; i <= taille; i++) {
 			grille.append((char) ('A' + i - 1)).append(" ");
 		}
 		grille.append("\n");
 
 		for (int i = 1; i <= taille; i++) {
-			grille.append(i).append(" ");
+			if (i<10)
+				grille.append(i).append("  ");
+			else 
+				grille.append(i).append(" ");
 			for (int j = 1; j <= taille; j++) {
 				Coordonnee c = new Coordonnee(i-1, j-1);
 				if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
