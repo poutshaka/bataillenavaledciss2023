@@ -181,7 +181,7 @@ public class GrilleNavale {
 	    /* Retourne true si et seulement si un des navires présents dans this a été touché en c. */
 	    public boolean estTouche(Coordonnee c) {
 	        for (Navire navire : navires) {
-	            if (navire.estTouche(c)) 
+	            if (navire != null && navire.estTouche(c)) 
 	                return true;
 	        } return false;
 	    }
