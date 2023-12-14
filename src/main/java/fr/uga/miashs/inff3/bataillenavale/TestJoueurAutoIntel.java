@@ -17,7 +17,9 @@ public class TestJoueurAutoIntel {
         // Cas où le dernier tir a touché
         joueur.retourAttaque(new Coordonnee(1, 1), Joueur.TOUCHE);
         Coordonnee attaqueApresTouche = joueur.choixAttaque();
-        assertNonNull(attaqueApresTouche);
+        if (attaqueApresTouche == null) {
+            throw new AssertionError("La coordonnée après un tir réussi ne doit pas être nulle.");
+        }
         assertTrue(grille.getTirs().contains(attaqueApresTouche));
 
         // Cas où le dernier tir n'a pas touché
