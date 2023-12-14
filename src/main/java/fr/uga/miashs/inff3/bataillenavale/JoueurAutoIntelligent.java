@@ -1,22 +1,27 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class JoueurAutoIntelligent extends JoueurAuto {
 
     private Coordonnee derniereAttaque;
     private int dernierEtat;
+    private List<Coordonnee> coordonneesDejaAttaquees;
 
     public JoueurAutoIntelligent(GrilleNavale g, String nom) {
         super(g, nom);
         this.derniereAttaque = null;
         this.dernierEtat = -1;
+        this.coordonneesDejaAttaquees = new ArrayList<>();
     }
 
     public JoueurAutoIntelligent(GrilleNavale g) {
         super(g);
         this.derniereAttaque = null;
         this.dernierEtat = -1;
+        this.coordonneesDejaAttaquees = new ArrayList<>();
     }
 
     @Override
@@ -24,6 +29,7 @@ public class JoueurAutoIntelligent extends JoueurAuto {
         super.retourAttaque(c, etat);
         this.derniereAttaque = c;
         this.dernierEtat = etat;
+        coordonneesDejaAttaquees.add(c);
     }
 
     @Override
@@ -32,18 +38,18 @@ public class JoueurAutoIntelligent extends JoueurAuto {
             // Si le dernier tir a touché, tire à coté
             return choisirCoordonneeAdjacent(derniereAttaque);
         } else {
-            // Sinon, choisissons une coordonnée aléatoire non encore attaquée
+            // Sinon, choisi une coordonnée aléatoire non attaquée
             return choisirCoordonneeAleatoireNonAttaquee();
         }
     }
 
     private Coordonnee choisirCoordonneeAdjacent(Coordonnee c) {
         Random random = new Random();
-        
+    
         int taille = getGrille().getTaille();
         int ligne = c.getLigne();
         int colonne = c.getColonne();
-        
+    
         int direction;
         int nouvelLigne;
         int nouvelColonne;
@@ -72,7 +78,7 @@ public class JoueurAutoIntelligent extends JoueurAuto {
                     nouvelLigne = ligne;
                     nouvelColonne = colonne;
             }
-        } while (!getGrille().coordValide(nouvelLigne, nouvelColonne) || getGrille().estDansTirsRecus(new Coordonnee(nouvelLigne, nouvelColonne)));
+        } while (coordonneesDejaAttaquees.contains(new Coordonnee(nouvelLigne, nouvelColonne)));
 
         return new Coordonnee(nouvelLigne, nouvelColonne);
     }
@@ -90,3 +96,5 @@ public class JoueurAutoIntelligent extends JoueurAuto {
         return coordonnee;
     }
 }
+
+    
