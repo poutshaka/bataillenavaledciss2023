@@ -3,6 +3,7 @@ package fr.uga.miashs.inff3.bataillenavale;
 import java.awt.Color;
 
 
+
 public class GrilleNavaleGraphique extends GrilleNavale {
 	private GrilleGraphique grille;
 
@@ -22,8 +23,20 @@ public class GrilleNavaleGraphique extends GrilleNavale {
     //ici j'ai juste colorié la première et dernière case il faut que je modifie ça
     	boolean ajout = super.ajouteNavire(n);
         if (ajout) {
-        		grille.colorie(n.getDebut(), Color.GREEN);
-        		grille.colorie(n.getFin(), Color.GREEN);
+        	if (n.estVertical()) {
+        		int colonne = n.getDebut().getColonne();
+        		for (int ligne = n.getDebut().getLigne(); ligne < n.getFin().getLigne(); ligne++) {
+        			Coordonnee c =new  Coordonnee(ligne,colonne);
+        			grille.colorie(c, Color.GREEN);
+        		}
+        	}else {
+        		int ligne = n.getDebut().getLigne();
+        		for (int colonne = n.getDebut().getColonne(); colonne < n.getFin().getColonne(); colonne++) {
+        			Coordonnee c =new  Coordonnee(ligne,colonne);
+        			grille.colorie(c, Color.GREEN);
+        		}
+        	}
+        		
         }return ajout;
     }
     

@@ -57,10 +57,11 @@ public class GrilleNavale {
 				grille.append(i).append(" ");
 			for (int j = 1; j <= taille; j++) {
 				Coordonnee c = new Coordonnee(i-1, j-1);
-				if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
-					grille.append("# ");
-				}else if (estTouche(c)) {
+				
+				if (estTouche(c)) {
 					grille.append("X ");
+				}else if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
+					grille.append("# ");
 				} else if (estALEau(c)) {
 					grille.append("O "); 
 				} else {
@@ -120,7 +121,7 @@ public class GrilleNavale {
 
 
 //________________________________________estDansGrille_____________________________________________
-	private boolean estDansGrille(Coordonnee c) {
+	public boolean estDansGrille(Coordonnee c) {
 	/*Retourne true si et seulement si c est dans this.*/
 		return c.getLigne() >= 0 && c.getLigne() < this.taille -1  && c.getColonne() >= 0 && c.getColonne() < this.taille -1 ; 
 	}
@@ -139,7 +140,7 @@ public class GrilleNavale {
 //----------------------------------------------- estDansTirsRecus ------------------------------------------------------------------------------------------------------------------------------------
 // Retourne true si et seulement si c correspond à un tir reçu par this.
 
-	 private boolean estDansTirsRecus(Coordonnee c) {
+	 public boolean estDansTirsRecus(Coordonnee c) {
 			for (int i = 0; i < tirsRecus.length; i++) {
 				if (tirsRecus[i] != null && tirsRecus[i].equals(c))
 					return true;
@@ -186,7 +187,7 @@ public class GrilleNavale {
 	        for (Navire navire : navires) {
 	            if (navire != null && navire.estTouche(c)) 
 	                return true;
-	        } return false;
+	        } return false; 
 	    }
 //__________________________________estALEau____________________________________________________________________	    	   
 	    
@@ -206,6 +207,7 @@ public class GrilleNavale {
 					return true;
 			}return false;
 		}
+	    
 //___________________________________perdu_____________________________________________________________________
 	    /* Retourne true si et seulement si tous les navires de this ont été coulés. */
 	    
