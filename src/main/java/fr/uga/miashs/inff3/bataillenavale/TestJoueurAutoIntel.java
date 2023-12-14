@@ -15,7 +15,7 @@ public class TestJoueurAutoIntel {
         System.out.println(grille.toString());
 
         // Effectuez quelques tirs et affichez les résultats
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             // Affichez l'état actuel de la grille avant le tir
             System.out.println("Avant le tir " + (i + 1) + ":");
             System.out.println(grille.toString());
