@@ -57,10 +57,11 @@ public class GrilleNavale {
 				grille.append(i).append(" ");
 			for (int j = 1; j <= taille; j++) {
 				Coordonnee c = new Coordonnee(i-1, j-1);
-				if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
-					grille.append("# ");
-				}else if (estTouche(c)) {
+				
+				if (estTouche(c)) {
 					grille.append("X ");
+				}else if (contientNavire(c)) {// normalement c'est la méthode contient de la classe navir
+					grille.append("# ");
 				} else if (estALEau(c)) {
 					grille.append("O "); 
 				} else {
