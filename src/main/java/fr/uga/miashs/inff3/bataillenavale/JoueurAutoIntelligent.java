@@ -24,7 +24,7 @@ public class JoueurAutoIntelligent extends JoueurAuto {
         this.coordonneesDejaAttaquees = new ArrayList<>();
     }
 
-    @Override
+    
     protected void retourAttaque(Coordonnee c, int etat) {
         super.retourAttaque(c, etat);
         this.derniereAttaque = c;
@@ -32,7 +32,7 @@ public class JoueurAutoIntelligent extends JoueurAuto {
         coordonneesDejaAttaquees.add(c);
     }
 
-    @Override
+   
     public Coordonnee choixAttaque() {
         if (dernierEtat == TOUCHE) {
             // Si le dernier tir a touché, tire à coté

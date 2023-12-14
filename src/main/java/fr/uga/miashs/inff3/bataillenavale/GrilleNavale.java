@@ -187,7 +187,7 @@ public class GrilleNavale {
 	        for (Navire navire : navires) {
 	            if (navire != null && navire.estTouche(c)) 
 	                return true;
-	        } return false;
+	        } return false; 
 	    }
 //__________________________________estALEau____________________________________________________________________	    	   
 	    
@@ -207,6 +207,7 @@ public class GrilleNavale {
 					return true;
 			}return false;
 		}
+	    
 //___________________________________perdu_____________________________________________________________________
 	    /* Retourne true si et seulement si tous les navires de this ont été coulés. */
 	    
