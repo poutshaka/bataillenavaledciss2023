@@ -35,7 +35,7 @@ public class FenetreJoueur extends JFrame {
 	 * Create the frame.
 	 */
 	public FenetreJoueur() {
-		this("Mattéo le plus beau",10);
+		this("Nom du Joueur",10);
 	}
 	
     public FenetreJoueur(String nom, int taille) {
