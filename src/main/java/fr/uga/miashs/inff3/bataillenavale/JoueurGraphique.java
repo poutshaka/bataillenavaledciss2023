@@ -39,10 +39,10 @@ est perdue.
     protected void retourDefense(Coordonnee c, int etat) {
         switch(etat) {
             case TOUCHE:
-                JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Vous avez touché un navire en " + c);
+                JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Le tir a touché un navire en " + c);
                 break;
             case COULE:
-                JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Vous avez coulé un navire en " + c);
+                JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Le tir a coulé un navire en " + c);
                 break;
             case GAMEOVER:
                 JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Vous avez perdu!!!");
