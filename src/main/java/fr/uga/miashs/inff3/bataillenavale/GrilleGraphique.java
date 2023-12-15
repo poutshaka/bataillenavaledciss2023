@@ -142,6 +142,7 @@ public class GrilleGraphique extends JPanel implements ActionListener {
 		 synchronized (this) {
 	            this.notifyAll();
 	        }
+		 this.setClicActive(true);
 	}
 	
 	 /**
