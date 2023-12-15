@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class JoueurAutoIntelligent extends JoueurAuto {
+public class JoueurAutoIntelligent extends JoueurAuto{
 
     private Coordonnee derniereAttaque;
     private int dernierEtat;
@@ -35,11 +35,15 @@ public class JoueurAutoIntelligent extends JoueurAuto {
    
     public Coordonnee choixAttaque() {
         if (dernierEtat == TOUCHE) {
+     
             // Si le dernier tir a touché, tire à coté
             return choisirCoordonneeAdjacent(derniereAttaque);
+            
         } else {
+        	
             // Sinon, choisi une coordonnée aléatoire non attaquée
             return choisirCoordonneeAleatoireNonAttaquee();
+          
         }
     }
 
@@ -86,6 +90,9 @@ public class JoueurAutoIntelligent extends JoueurAuto {
                     nouvelLigne = ligne;
                     nouvelColonne = colonne;
             }
+            if(A>0 && B>0 && C>0 && D>0)
+            	nouvelLigne= (int)(Math.random()*taille);
+            	nouvelColonne= (int)(Math.random()*taille);
         } while (coordonneesDejaAttaquees.contains(new Coordonnee(nouvelLigne, nouvelColonne)) || getGrille().estDansTirsRecus(new Coordonnee(nouvelLigne, nouvelColonne)));
 
         return new Coordonnee(nouvelLigne, nouvelColonne);
