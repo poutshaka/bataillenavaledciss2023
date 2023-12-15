@@ -118,12 +118,13 @@ public class BatailleNaval {
 				// création des instances
 
 				int[] taillesNavires = {2,3,3,4,5};
-
+				
+				
+				FenetreJoueur f1 = new FenetreJoueur("NomJ1",10);
+				f1.pack(); 
+                f1.setVisible(true); 
 				if ("Graphique".equals(j1Type)) {
-					
-					FenetreJoueur f1 = new FenetreJoueur("NomJ1",10);
-					f1.pack(); 
-	                f1.setVisible(true); 
+
 					j1 = new JoueurGraphique(f1.getGrilleDefense(), f1.getGrilleTirs(), NomJ1);
 				}
 				else if ("Texte".equals(j1Type)) {
@@ -135,10 +136,11 @@ public class BatailleNaval {
 					j1 = new JoueurAuto(g, NomJ1);
 				}
 
+				FenetreJoueur f2 = new FenetreJoueur("NomJ2",10);
+				f2.pack();
+                f2.setVisible(true);
 				if ("Graphique".equals(j2Type)) {
-					FenetreJoueur f2 = new FenetreJoueur("NomJ2",10);
-					f2.pack();
-	                f2.setVisible(true);
+
 					j2 = new JoueurGraphique(f2.getGrilleDefense(), f2.getGrilleTirs(), NomJ2);
 				}
 				else if ("Texte".equals(j2Type)) {
