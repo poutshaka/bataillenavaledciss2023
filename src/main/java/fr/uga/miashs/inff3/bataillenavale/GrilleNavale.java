@@ -1,6 +1,7 @@
 package fr.uga.miashs.inff3.bataillenavale;
 
 
+
 public class GrilleNavale {
 
 	private Navire[] navires;
@@ -175,7 +176,7 @@ public class GrilleNavale {
 	    }
  //_____________________________________recoitTir_____________________________________________________________	    
 	   
-	    public boolean recoitTir(Coordonnee c) {
+	    public boolean recoitTir2(Coordonnee c) {
 	        /*
 	         * Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement 
 	         * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
@@ -186,6 +187,21 @@ public class GrilleNavale {
 	            ajouteDansTirsRecus(c);
 	            for (Navire navire : navires) {
 	                if (navire.estTouche(c)) 
+	                    return true;
+	            }return false;
+	       }
+	    
+	    public boolean recoitTir(Coordonnee c) {
+	        /*
+	    	 * Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement 
+	    	 * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
+	    	 * navire de this.
+	    	 */
+	            if (!estDansGrille(c) || !ajouteDansTirsRecus(c)) 
+	                return false;
+	            ajouteDansTirsRecus(c);
+	            for (Navire navire : navires) {
+	            	if (navire.estTouche(c)) 
 	                    return true;
 	            }return false;
 	       }
