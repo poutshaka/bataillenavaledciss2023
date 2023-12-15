@@ -33,6 +33,12 @@ public class BatailleNaval {
 	private int tailleGrille;
 	
 
+    private JRadioButton J1G;
+    private JRadioButton j1Text;
+    private JRadioButton J2G;
+    private JRadioButton j2Texte;
+	
+
 	/**
 	 * Launch the application.
 	 */
@@ -74,6 +80,7 @@ public class BatailleNaval {
 		frmBatailleNavale.setBounds(100, 100, 653, 478);
 		frmBatailleNavale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		
 		JPanel panelHaut = new JPanel();
 		frmBatailleNavale.getContentPane().add(panelHaut, BorderLayout.NORTH);
 		panelHaut.setLayout(new BoxLayout(panelHaut, BoxLayout.X_AXIS));
@@ -84,6 +91,11 @@ public class BatailleNaval {
 		taillegrille = new JTextField();
 		panelHaut.add(taillegrille);
 		taillegrille.setColumns(10);
+		
+	    J1G = new JRadioButton("Joueur Graphique");
+	    j1Text = new JRadioButton("Joueur Texte");
+	    J2G = new JRadioButton("Joueur Graphique");
+	    j2Texte = new JRadioButton("Joueur Texte");
 		
 		JPanel panelBas = new JPanel();
 		frmBatailleNavale.getContentPane().add(panelBas, BorderLayout.SOUTH);
@@ -109,12 +121,10 @@ public class BatailleNaval {
 
 				if (j1Type == "Graphique") {
 					
-
 					FenetreJoueur f1 = new FenetreJoueur("NomJ1",10);
 					f1.pack(); 
 	                f1.setVisible(true); 
 					j1 = new JoueurGraphique(f1.getGrilleDefense(), f1.getGrilleTirs(), NomJ1);
-
 				}
 				else if (j1Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
@@ -126,12 +136,10 @@ public class BatailleNaval {
 				}
 
 				if (j2Type == "Graphique") {
-
 					FenetreJoueur f2 = new FenetreJoueur("NomJ2",10);
 					f2.pack();
 	                f2.setVisible(true);
 					j2 = new JoueurGraphique(f2.getGrilleDefense(), f2.getGrilleTirs(), NomJ2);
-
 				}
 				else if (j2Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
