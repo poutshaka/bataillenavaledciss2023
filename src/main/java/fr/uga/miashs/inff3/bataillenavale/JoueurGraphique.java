@@ -12,16 +12,15 @@ public class JoueurGraphique extends JoueurAvecGrille {
 
     
    
-    /* Permite obtener un jugador gráfico de nombre "nom" que realiza disparos al hacer clic en
-     * la "grilleTirs" y cuya flota está ubicada en "grilleDefense".
-     */
+    /*permet d'obtenir un joueur graphique de nom nom qui effectue des tirs en cliquant sur
+    grilleTirs et dont la flotte est placée sur grilleDefense.*/
     public JoueurGraphique(GrilleNavaleGraphique grilleDefense, GrilleGraphique grilleTirs, String nom) {
         super(grilleDefense, nom);
         this.grilleTirs = grilleTirs;
     }
 
-    /* Permite obtener un jugador gráfico que realiza disparos al hacer clic en "grilleTirs" y
-     * cuya flota está ubicada en "grilleDefense".
+    /* permet d'obtenir un joueur graphique qui effectue des tirs en cliquant sur grilleTirs et
+dont la flotte est placée sur grilleDefense.
      */
     
     public JoueurGraphique(GrilleNavaleGraphique grilleDefense, GrilleGraphique grilleTirs) {
@@ -29,13 +28,13 @@ public class JoueurGraphique extends JoueurAvecGrille {
         this.grilleTirs = grilleTirs;
     }
     
-    /* Consiste en recuperar la coordenada seleccionada desde "grilleTirs". */
+    /* Consiste à récupérer la coordonnée choisie depuis grilleTirs. */
     public Coordonnee choixAttaque() {
         return grilleTirs.getCoordonneeSelectionnee();
     }
     
-    /* Muestra un JOptionPane cuando el disparo ha tocado o hundido un barco, o cuando se ha
-     * perdido la partida.
+    /* Affichage d'un JOptionPane lorsque le tir a touché ou coulé un navire, ou lorsque la partie
+est perdue.
      */
     protected void retourDefense(Coordonnee c, int etat) {
         switch(etat) {
