@@ -45,14 +45,18 @@ public class JoueurAutoIntelligent extends JoueurAuto {
 
     private Coordonnee choisirCoordonneeAdjacent(Coordonnee c) {
         Random random = new Random();
-    
+
         int taille = getGrille().getTaille();
         int ligne = c.getLigne();
         int colonne = c.getColonne();
-    
+
         int direction;
         int nouvelLigne;
         int nouvelColonne;
+        int A=0;
+        int B=0;
+        int C=0;
+        int D=0;
 
         do {
             direction = random.nextInt(4); // 0: haut, 1: droite, 2: bas, 3: gauche
@@ -61,27 +65,32 @@ public class JoueurAutoIntelligent extends JoueurAuto {
                 case 0:
                     nouvelLigne = Math.max(0, ligne - 1);
                     nouvelColonne = colonne;
+                    A++;
                     break;
                 case 1:
                     nouvelLigne = ligne;
                     nouvelColonne = Math.min(taille - 1, colonne + 1);
+                    B++;
                     break;
                 case 2:
                     nouvelLigne = Math.min(taille - 1, ligne + 1);
                     nouvelColonne = colonne;
+                    C++;
                     break;
                 case 3:
                     nouvelLigne = ligne;
                     nouvelColonne = Math.max(0, colonne - 1);
+                    D++;
                     break;
                 default:
                     nouvelLigne = ligne;
                     nouvelColonne = colonne;
             }
-        } while (coordonneesDejaAttaquees.contains(new Coordonnee(nouvelLigne, nouvelColonne)));
+        } while (coordonneesDejaAttaquees.contains(new Coordonnee(nouvelLigne, nouvelColonne)) || getGrille().estDansTirsRecus(new Coordonnee(nouvelLigne, nouvelColonne)));
 
         return new Coordonnee(nouvelLigne, nouvelColonne);
     }
+
     private Coordonnee choisirCoordonneeAleatoireNonAttaquee() {
         Random random = new Random();
         int taille = getGrille().getTaille();
