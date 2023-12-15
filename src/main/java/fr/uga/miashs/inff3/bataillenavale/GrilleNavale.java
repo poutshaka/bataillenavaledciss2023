@@ -174,26 +174,21 @@ public class GrilleNavale {
 	    }return false; 
 	    }
  //_____________________________________recoitTir_____________________________________________________________	    
-	    
-		 /* Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement 
-		 * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
-		 * navire de this. */
-		 
-	    
+	   
 	    public boolean recoitTir(Coordonnee c) {
-			boolean tir = ajouteDansTirsRecus(c);
-			boolean touche = false;
-			if (tir) {
-				int i = 0;
-				while (i < nbNavires && !touche) {
-					if (navires[i].recoitTir(c))
-						touche = true;
-					i++;
-				}
-			}
-
-			return touche;
-		}
+	        /*
+	         * Ajoute c aux tirs reçus de this si nécessaire. Retourne true si et seulement 
+	         * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
+	         * navire de this.
+	         */
+	            if (!estDansGrille(c) || !ajouteDansTirsRecus(c)) 
+	                return false;
+	            ajouteDansTirsRecus(c);
+	            for (Navire navire : navires) {
+	                if (navire.estTouche(c)) 
+	                    return true;
+	            }return false;
+	       }
 
 //__________________________________estTouche__________________________________________________________________
 	    /* Retourne true si et seulement si un des navires présents dans this a été touché en c. */
@@ -216,21 +211,27 @@ public class GrilleNavale {
 		 * touché en c et est coulé */
 	   
 	    public boolean estCoule(Coordonnee c) {
-			for (Navire n : navires) {
-				if (n.contient(c) && n.estCoule()) 
-					return true;
-			}return false;
-		}
+	    	
+	    	for(int i=0; i<nbNavires; i++) {
+	    		
+	    		if (this.navires[i].estTouche(c) && this.navires[i].estCoule()) {
+	    	return true; 
+	    		}
+	    	}
+	    		return false; 
+	    }
 	    
 //___________________________________perdu_____________________________________________________________________
 	    /* Retourne true si et seulement si tous les navires de this ont été coulés. */
 	    
 	    public boolean perdu() {
-			for (Navire n : navires) {
-				if (!n.estCoule())
-					return false;
-			}return true;
-		}
+	    	
+	    	for (int i = 0; i < this.nbNavires; i++)
+	    		if (!(this.navires[i].estCoule()))
+	    			return false;
+	    	return true;
+	    	}
+
 	    
 		public static void main(String[] args) {
 	        // Assumez que grilleNavale est votre objet GrilleNavale
