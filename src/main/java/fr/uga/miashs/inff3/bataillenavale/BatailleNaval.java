@@ -18,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
+
 public class BatailleNaval {
 
 	private JFrame frmBatailleNavale;
@@ -28,6 +29,7 @@ public class BatailleNaval {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	
 	private Joueur j1, j2;
+	
 	private int tailleGrille;
 	
 
