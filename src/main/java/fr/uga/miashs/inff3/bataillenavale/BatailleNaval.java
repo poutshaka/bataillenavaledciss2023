@@ -121,8 +121,10 @@ public class BatailleNaval {
 
 				if (j1Type == "Graphique") {
 					
-					FenetreJoueur f = new FenetreJoueur("NomJ1",10);
-					j1 = new JoueurGraphique(f.getGrilleDefense(), f.getGrilleTirs(), NomJ1);
+					FenetreJoueur f1 = new FenetreJoueur("NomJ1",10);
+					f1.pack(); 
+	                f1.setVisible(true); 
+					j1 = new JoueurGraphique(f1.getGrilleDefense(), f1.getGrilleTirs(), NomJ1);
 				}
 				else if (j1Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
@@ -134,8 +136,10 @@ public class BatailleNaval {
 				}
 
 				if (j2Type == "Graphique") {
-					FenetreJoueur f = new FenetreJoueur("NomJ2",10);
-					j2 = new JoueurGraphique(f.getGrilleDefense(), f.getGrilleTirs(), NomJ2);
+					FenetreJoueur f2 = new FenetreJoueur("NomJ2",10);
+					f2.pack();
+	                f2.setVisible(true);
+					j2 = new JoueurGraphique(f2.getGrilleDefense(), f2.getGrilleTirs(), NomJ2);
 				}
 				else if (j2Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
