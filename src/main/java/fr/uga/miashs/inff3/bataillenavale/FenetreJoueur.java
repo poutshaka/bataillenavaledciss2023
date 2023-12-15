@@ -67,7 +67,6 @@ public class FenetreJoueur extends JFrame {
 	    }
 	    
 	    grilleDefense.placementAuto(taillesNavires);
-		System.out.println(grilleDefense);
 	}
     
     public GrilleGraphique getGrilleTirs() {
