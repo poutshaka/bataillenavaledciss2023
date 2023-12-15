@@ -31,7 +31,6 @@ public class BatailleNaval {
 	private int tailleGrille;
 	
 
-
 	/**
 	 * Launch the application.
 	 */
