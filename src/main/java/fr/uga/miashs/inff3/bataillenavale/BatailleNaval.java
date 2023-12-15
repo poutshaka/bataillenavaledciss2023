@@ -27,7 +27,7 @@ public class BatailleNaval {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	
-	private Joueur joueur1, joueur2;
+	private Joueur j1, j2;
 	private int tailleGrille;
 	
 
