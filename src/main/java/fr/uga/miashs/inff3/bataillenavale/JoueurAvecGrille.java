@@ -23,6 +23,7 @@ private GrilleNavale grille;
 	
 
 	public int defendre(Coordonnee c) {
+		grille.recoitTir(c);
 		/*Cette méthode est invoquée sur le joueur défenseur après le choix de l’attaquant, c est la coordonnée à laquelle l’attaquant a choisi d’effectuer un tir. Elle retourne le résultat du tir qui ne peut être que TOUCHE, COULE, A_L_EAU, ou GAMEOVER.*/
         if (grille.estTouche(c)) {
             if (grille.estCoule(c)) {

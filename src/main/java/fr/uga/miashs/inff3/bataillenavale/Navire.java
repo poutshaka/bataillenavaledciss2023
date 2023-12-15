@@ -142,7 +142,7 @@ public class Navire {
 	
 	public boolean estTouche(Coordonnee c) {
 		/* Retourne true si et seulement si this a été touché par un tir en c. */
-		return contient(c) && partiesTouchees[c.getLigne() - debut.getLigne()] != null;
+		return contient(c) && partiesTouchees[estVertical() ? c.getLigne() - debut.getLigne() : c.getColonne() - debut.getColonne()] != null;
 	}
 	
 	public boolean estTouche() {
