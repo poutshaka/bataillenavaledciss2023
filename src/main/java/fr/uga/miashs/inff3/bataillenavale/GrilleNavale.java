@@ -196,13 +196,14 @@ public class GrilleNavale {
 	    	 * si c ne correspondait pas déjà à un tir reçu et a permis de toucher un 
 	    	 * navire de this.
 	    	 */
-	            if (!estDansGrille(c) || !ajouteDansTirsRecus(c)) 
+	            if (!estDansGrille(c) || estDansTirsRecus(c)) 
 	                return false;
 	            ajouteDansTirsRecus(c);
 	            for (Navire navire : navires) {
-	            	if (navire.estTouche(c)) 
+	            	if (navire.recoitTir(c)) 
 	                    return true;
-	            }return false;
+	            }
+	            return false;
 	       }
 
 //__________________________________estTouche__________________________________________________________________
