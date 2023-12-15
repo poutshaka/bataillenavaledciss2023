@@ -58,6 +58,8 @@ public class BatailleNaval {
             }
         }.start();
     }
+    
+
 
     /**
      * Create the application.
@@ -110,14 +112,15 @@ public class BatailleNaval {
 
                 // création des instances
 
-                int[] taillesNavires = { 2, 3, 3, 4, 5 };
+                int[] taillesNavires = { 2, 3, 4, 5 };
 
                 FenetreJoueur f1 = new FenetreJoueur(LeNomJ1.getText(), 10);
                 f1.pack();
                 f1.setVisible(true);
-                if ("Graphique".equals(j1Type)) {
+                f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                if (j1Type=="Graphique") {
                     j1 = new JoueurGraphique(f1.getGrilleDefense(), f1.getGrilleTirs(), NomJ1);
-                } else if ("Texte".equals(j1Type)) {
+                } else if (j1Type=="Texte") {
                     GrilleNavale g = new GrilleNavale(taille, taillesNavires);
                     j1 = new JoueurTexte(g, NomJ1);
                 } else {
@@ -128,9 +131,10 @@ public class BatailleNaval {
                 FenetreJoueur f2 = new FenetreJoueur(LeNomJ2.getText(), 10);
                 f2.pack();
                 f2.setVisible(true);
-                if ("Graphique".equals(j2Type)) {
+                f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                if (j2Type=="Graphique") {
                     j2 = new JoueurGraphique(f2.getGrilleDefense(), f2.getGrilleTirs(), NomJ2);
-                } else if ("Texte".equals(j2Type)) {
+                } else if (j2Type=="Texte") {
                     GrilleNavale g = new GrilleNavale(taille, taillesNavires);
                     j2 = new JoueurTexte(g, NomJ2);
                 } else {
