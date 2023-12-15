@@ -20,7 +20,7 @@ public class GrilleNavale {
 			throw new IllegalArgumentException("taille de la grille incorrecte");
 		this.taille = taille;
 		this.nbNavires = 0;
-		this.navires = new Navire[nbNavires];
+		this.navires = new Navire[taillesNavires.length];
 		this.tirsRecus = new Coordonnee[taille * taille];
 		this.nbTirsRecus = 0;
 		placementAuto(taillesNavires);

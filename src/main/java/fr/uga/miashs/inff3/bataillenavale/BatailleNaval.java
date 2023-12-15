@@ -107,10 +107,9 @@ public class BatailleNaval {
 				int[] taillesNavires = {2,3,3,4,5};
 
 				if (j1Type == "Graphique") {
-					GrilleNavaleGraphique grilleDefense = new GrilleNavaleGraphique(taille);
-					GrilleGraphique grilleTirs = new GrilleGraphique(taille);
-					grilleDefense.placementAuto(taillesNavires);
-					j1 = new JoueurGraphique(grilleDefense, grilleTirs, NomJ1);
+					
+					FenetreJoueur f = new FenetreJoueur("toto",10);
+					j1 = new JoueurGraphique(f.getGrilleDefense(), f.getGrilleTirs(), NomJ1);
 				}
 				else if (j1Type == "Texte") {
 					GrilleNavale g = new GrilleNavale(taille, taillesNavires);
