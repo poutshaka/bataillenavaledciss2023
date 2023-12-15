@@ -200,7 +200,7 @@ public class GrilleNavale {
 	                return false;
 	            ajouteDansTirsRecus(c);
 	            for (Navire navire : navires) {
-	            	if (navire.recoitTir(c)) 
+	            	if (navire!=null &&navire.recoitTir(c)) 
 	                    return true;
 	            }
 	            return false;
@@ -239,7 +239,7 @@ public class GrilleNavale {
 	    
 	    public boolean estCoule(Coordonnee c) {
 	        for (Navire n : navires) {
-	            if (n.contient(c) && n.estCoule()) {
+	            if (n!=null&&n.contient(c) && n.estCoule()) {
 	                return true;
 	            }
 	        }

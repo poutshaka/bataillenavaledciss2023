@@ -16,6 +16,7 @@ public class JoueurGraphique extends JoueurAvecGrille {
     grilleTirs et dont la flotte est placée sur grilleDefense.*/
     public JoueurGraphique(GrilleNavaleGraphique grilleDefense, GrilleGraphique grilleTirs, String nom) {
         super(grilleDefense, nom);
+        this.grilleDefense=grilleDefense;
         this.grilleTirs = grilleTirs;
     }
 
@@ -31,7 +32,8 @@ dont la flotte est placée sur grilleDefense.
     /* Consiste à récupérer la coordonnée choisie depuis grilleTirs. */
     public Coordonnee choixAttaque() {
         Coordonnee c = grilleTirs.getCoordonneeSelectionnee();
-        boolean resultatTir = grilleDefense.recoitTir(c);
+        
+        //boolean resultatTir = grilleDefense.recoitTir(c);
         return c;
     }
     
@@ -40,7 +42,7 @@ est perdue.
      */
     protected void retourDefense(Coordonnee c, int etat) {
         Color couleur = etat == A_L_EAU ? Color.BLUE : Color.RED;
-        grilleTirs.colorie(c, couleur);
+        grilleDefense.getGrilleGraphique().colorie(c, couleur);
         switch(etat) {
             case TOUCHE:
                 JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Le tir a touché un navire en " + c);

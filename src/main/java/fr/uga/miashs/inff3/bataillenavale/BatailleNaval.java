@@ -114,11 +114,13 @@ public class BatailleNaval {
 
                 int[] taillesNavires = { 2, 3, 4, 5 };
 
-                FenetreJoueur f1 = new FenetreJoueur(LeNomJ1.getText(), 10);
-                f1.pack();
-                f1.setVisible(true);
-                f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                if (j1Type=="Graphique") {
+                
+                if (J1G.isSelected()) {
+                	System.out.println("coucou");
+                	FenetreJoueur f1 = new FenetreJoueur(LeNomJ1.getText(), 10);
+                    f1.pack();
+                    f1.setVisible(true);
+                    f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     j1 = new JoueurGraphique(f1.getGrilleDefense(), f1.getGrilleTirs(), NomJ1);
                 } else if (j1Type=="Texte") {
                     GrilleNavale g = new GrilleNavale(taille, taillesNavires);
@@ -128,11 +130,12 @@ public class BatailleNaval {
                     j1 = new JoueurAuto(g, NomJ1);
                 }
 
-                FenetreJoueur f2 = new FenetreJoueur(LeNomJ2.getText(), 10);
-                f2.pack();
-                f2.setVisible(true);
-                f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                if (j2Type=="Graphique") {
+               
+                if (J2G.isSelected()) {
+                	 FenetreJoueur f2 = new FenetreJoueur(LeNomJ2.getText(), 10);
+                     f2.pack();
+                     f2.setVisible(true);
+                     f2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     j2 = new JoueurGraphique(f2.getGrilleDefense(), f2.getGrilleTirs(), NomJ2);
                 } else if (j2Type=="Texte") {
                     GrilleNavale g = new GrilleNavale(taille, taillesNavires);
@@ -174,7 +177,7 @@ public class BatailleNaval {
 		panelCenHaute.add(LeNomJ1);
 		LeNomJ1.setColumns(30);
 		
-		JRadioButton J1G = new JRadioButton("Joueur Graphique");
+		 J1G = new JRadioButton("Joueur Graphique");
 		J1G.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -224,15 +227,15 @@ public class BatailleNaval {
 		panelCenBas.add(LeNomJ2);
 		LeNomJ2.setColumns(30);
 		
-		JRadioButton JG2 = new JRadioButton("Joueur Graphique");
-		JG2.addActionListener(new ActionListener() {
+		J2G = new JRadioButton("Joueur Graphique");
+		J2G.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		buttonGroup_1.add(JG2);
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, JG2, 16, SpringLayout.SOUTH, LeNomJ2);
-		sl_panelCenBas.putConstraint(SpringLayout.WEST, JG2, 0, SpringLayout.WEST, NomJoueur2);
-		panelCenBas.add(JG2);
+		buttonGroup_1.add(J2G);
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, J2G, 16, SpringLayout.SOUTH, LeNomJ2);
+		sl_panelCenBas.putConstraint(SpringLayout.WEST, J2G, 0, SpringLayout.WEST, NomJoueur2);
+		panelCenBas.add(J2G);
 		
 		JRadioButton j2Text = new JRadioButton("Joueur Texte");
 		j2Text.addActionListener(new ActionListener() {
@@ -240,7 +243,7 @@ public class BatailleNaval {
 			}
 		});
 		buttonGroup_1.add(j2Text);
-		sl_panelCenBas.putConstraint(SpringLayout.NORTH, j2Text, 6, SpringLayout.SOUTH, JG2);
+		sl_panelCenBas.putConstraint(SpringLayout.NORTH, j2Text, 6, SpringLayout.SOUTH, J2G);
 		sl_panelCenBas.putConstraint(SpringLayout.WEST, j2Text, 0, SpringLayout.WEST, NomJoueur2);
 		panelCenBas.add(j2Text);
 		
