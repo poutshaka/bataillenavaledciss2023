@@ -39,6 +39,8 @@ dont la flotte est placée sur grilleDefense.
 est perdue.
      */
     protected void retourDefense(Coordonnee c, int etat) {
+        Color couleur = etat == A_L_EAU ? Color.BLUE : Color.RED;
+        grilleTirs.colorie(c, couleur);
         switch(etat) {
             case TOUCHE:
                 JOptionPane.showMessageDialog(grilleDefense.getGrilleGraphique(), "Le tir a touché un navire en " + c);
