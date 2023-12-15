@@ -30,7 +30,9 @@ dont la flotte est placée sur grilleDefense.
     
     /* Consiste à récupérer la coordonnée choisie depuis grilleTirs. */
     public Coordonnee choixAttaque() {
-        return grilleTirs.getCoordonneeSelectionnee();
+        Coordonnee c = grilleTirs.getCoordonneeSelectionnee();
+        boolean resultatTir = grilleDefense.recoitTir(c);
+        return c;
     }
     
     /* Affichage d'un JOptionPane lorsque le tir a touché ou coulé un navire, ou lorsque la partie
