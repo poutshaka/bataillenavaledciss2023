@@ -33,9 +33,7 @@ public class TestJoueurAutoIntel {
             System.out.println("Après le tir " + (i + 1) + ":");
             System.out.println(grille.toString());
 
-            // Ajoutez une pause ou attendez l'entrée de l'utilisateur si nécessaire
-            // pour visualiser chaque étape du test
-            // par exemple: Scanner scanner = new Scanner(System.in); scanner.nextLine();
+          
         }
     }
 }
